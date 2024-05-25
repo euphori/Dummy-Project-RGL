@@ -1,0 +1,27 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.netherite_sickle": {
+			"geometry": "geometry.netherite_sickle",
+			"materials": [
+				{
+					"*": "material.default"
+				}
+			],
+			"textures": [
+				"texture.netherite_sickle"
+			]
+		},
+		"controller.render.golden_kings_excalibur": {
+			"geometry": "geometry.golden_kings_excalibur",
+			"materials": [
+				{
+					"*": "material.default"
+				}
+			],
+			"textures": [
+				"texture.golden_kings_excalibur"
+			]
+		}
+	}
+}
