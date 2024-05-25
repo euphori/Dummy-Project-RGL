@@ -1,0 +1,38 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+      "description": {
+        "identifier": "dummy:electrizard",
+        "materials": {
+          "default": "entity_alphatest"
+        },
+        "textures": {
+          "default": "textures/entity/electrizard"
+        },
+        "geometry": {
+          "default": "geometry.electrizard"
+        },
+        "animations": {
+          "root": "controller.animation.electrizard",
+          "walk": "animation.electrizard.walk",
+          "idle": "animation.electrizard.idle"
+         
+        },
+        "scripts": {
+          "animate": [
+            "root"
+          
+          ]
+        },
+       
+        "render_controllers": [
+          "controller.render.default"
+        ],
+        "spawn_egg": {
+          "base_color": "#511828",
+          "overlay_color": "#ef8266"
+        }
+      }
+    }
+  }
+  
