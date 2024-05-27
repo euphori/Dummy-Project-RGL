@@ -13,12 +13,11 @@
           },
           "default":{ 
             "on_entry": [
-              "@s dummy:atk.reset",
-              "v.sickle = 0;"
+              "@s dummy:atk.reset"
             ],
                 "transitions": [
                   {
-                    "attack_basic1": "v.attack_time && v.sickle"
+                    "attack_basic1": "v.attack_time"
                   },
                   {
                     "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
@@ -36,7 +35,7 @@
                 ],
               "transitions": [
                   {
-                      "attack_basic2": "v.attack_time && v.sickle"
+                      "attack_basic2": "v.attack_time && v.sickle && q.all_animations_finished"
                     },
                     {
                       "default": "q.all_animations_finished"
@@ -57,10 +56,10 @@
               ],
               "transitions": [
                    {
-                      "attack_basic3": "v.attack_time && v.sickle"
+                      "attack_basic3": "v.attack_time && v.sickle && q.all_animations_finished"
                     },
                     {
-                      "default": "q.all_animations_finished"
+                      "default": "v.sickle == 2"
                     },
                     {
                       "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
@@ -78,7 +77,7 @@
             ],
             "transitions": [
                   {
-                      "attack_basic1" : "v.attack_time && q.all_animations_finished"
+                    "attack_basic1" : "v.attack_time && q.all_animations_finished"
                   },
                   {
                     "default": "q.all_animations_finished"

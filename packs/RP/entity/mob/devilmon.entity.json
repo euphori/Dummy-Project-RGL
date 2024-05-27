@@ -1,0 +1,38 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+      "description": {
+        "identifier": "dummy:devilmon",
+        "materials": {
+          "default": "entity_alphatest"
+        },
+        "textures": {
+          "default": "textures/entity/devilmon"
+        },
+        "geometry": {
+          "default": "geometry.devilmon"
+        },
+        "animations": {
+          "root": "controller.animation.devilmon",
+          "walk": "animation.devilmon.jump",
+          "idle": "animation.devilmon.idle"
+         
+        },
+        "scripts": {
+          "animate": [
+            "root"
+          
+          ]
+        },
+       
+        "render_controllers": [
+          "controller.render.default"
+        ],
+        "spawn_egg": {
+          "base_color": "#511828",
+          "overlay_color": "#ef8266"
+        }
+      }
+    }
+  }
+  

@@ -208,7 +208,7 @@
 			},
 			"dummy:atk.reset" :{
 				"set_property":{
-					"dummy:atk_state" : "q.property('dummy:atk_state') = 0;"
+					"dummy:atk_state" : 0
 				}
 			},
 			

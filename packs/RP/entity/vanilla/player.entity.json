@@ -115,8 +115,6 @@
 				"holding_brush": "animation.humanoid.holding_brush",
 				"brushing": "animation.humanoid.brushing",
 
-		
-
 				"controller.golden_kings_excalibur": "controller.animation.golden_kings_excalibur",
 				"golden_kings_excalibur.tpp.run": "animation.golden_kings_excalibur.tpp.run",
 				"golden_kings_excalibur.tpp.idle": "animation.golden_kings_excalibur.tpp.idle",

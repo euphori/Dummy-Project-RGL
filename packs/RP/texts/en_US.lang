@@ -3,3 +3,9 @@ pack.description=Test Project
 
 entity.dummy:electrizard.name=Electrizard
 item.spawn_egg.entity.dummy:electrizard.name=Spawn Electrizard
+
+entity.dummy:devilmon.name=Devilmon
+item.spawn_egg.entity.dummy:devilmon.name=Spawn Devilmon
+
+entity.dummy:abyssal_anarchnid.name=Abyssal Anarchnid
+item.spawn_egg.entity.dummy:abyssal_anarchnid.name=Spawn Abyssal Anarchnid

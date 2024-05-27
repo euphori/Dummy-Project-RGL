@@ -13,12 +13,12 @@
             },
             "default":{ 
               "on_entry": [
-                "@s dummy:atk.reset",
-                "v.sickle = 0;"
+                "@s dummy:atk.reset"
+
               ],
                   "transitions": [
                     {
-                      "attack_basic1": "v.attack_time && v.sickle"
+                      "attack_basic1": "v.attack_time"
                     },
                     {
                       "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"

@@ -24,7 +24,7 @@
 					"position": [1, 0, 0]
 				},
 				"rightLeg": {
-					"rotation": ["math.cos(query.life_time*180)*+0.8039", 15.01012, 0.70806],
+					"rotation": ["math.cos(query.life_time*180)*0.8039", 15.01012, 0.70806],
 					"position": [0, 0, -1]
 				},
 				"sword_all": {

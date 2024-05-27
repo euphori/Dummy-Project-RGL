@@ -1,0 +1,38 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+      "description": {
+        "identifier": "dummy:abyssal_anarchnid",
+        "materials": {
+          "default": "entity_alphatest"
+        },
+        "textures": {
+          "default": "textures/entity/abyssal_arachnid"
+        },
+        "geometry": {
+          "default": "geometry.abyssal_anarchnid"
+        },
+        "animations": {
+          "root": "controller.animation.abyssal_anarchnid",
+          "walk": "animation.abyssal_anarchnid.walk",
+          "idle": "animation.abyssal_anarchnid.idle"
+         
+        },
+        "scripts": {
+          "animate": [
+            "root"
+          
+          ]
+        },
+       
+        "render_controllers": [
+          "controller.render.default"
+        ],
+        "spawn_egg": {
+          "base_color": "#511828",
+          "overlay_color": "#ef8266"
+        }
+      }
+    }
+  }
+  
