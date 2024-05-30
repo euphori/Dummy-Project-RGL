@@ -127,6 +127,7 @@
 				"netherite_sickle.tpp.run": "animation.netherite_sickle.tpp.run",
 				"netherite_sickle.tpp.idle": "animation.netherite_sickle.tpp.idle",
 				"netherite_sickle.tpp.jump": "animation.netherite_sickle.tpp.jump",
+				"netherite_sickle.tpp.double_jump": "animation.netherite_sickle.tpp.double_jump",
 				"netherite_sickle.tpp.attack_basic1": "animation.netherite_sickle.tpp.attack_basic1",
 				"netherite_sickle.tpp.attack_basic2": "animation.netherite_sickle.tpp.attack_basic2",
 				"netherite_sickle.tpp.attack_basic3": "animation.netherite_sickle.tpp.attack_basic3",

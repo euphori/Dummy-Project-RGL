@@ -9,10 +9,17 @@
 			"animations": {
 				"controller.netherite_sickle":"controller.animation.netherite_sickle",
 				"controller.golden_kings_excalibur" : "controller.animation.golden_kings_excalibur",
+				"golden_kings_excalibur.tpp.attack_basic1" : "animation.golden_kings_excalibur.tpp.attack_basic1",
+				"golden_kings_excalibur.tpp.attack_basic2" : "animation.golden_kings_excalibur.tpp.attack_basic2",
+				"golden_kings_excalibur.tpp.attack_basic3" : "animation.golden_kings_excalibur.tpp.attack_basic3",
+
+
 				"netherite_sickle.tpp.attack_basic1" : "animation.netherite_sickle.tpp.attack_basic1",
 				"netherite_sickle.tpp.attack_basic2" : "animation.netherite_sickle.tpp.attack_basic2",
 				"netherite_sickle.tpp.attack_basic3" : "animation.netherite_sickle.tpp.attack_basic3",
-				"netherite_sickle.tpp.throw" : "animation.netherite_sickle.tpp.throw"
+				"netherite_sickle.tpp.throw" : "animation.netherite_sickle.tpp.throw",
+				"netherite_sickle.tpp.jump" : "animation.netherite_sickle.tpp.jump",
+				"netherite_sickle.tpp.double_jump" : "animation.netherite_sickle.tpp.double_jump"
 			},
 			"scripts": {
 				"animate": [
@@ -35,6 +42,7 @@
 					"type": "bool",
 					"default": false
 				  }
+				
 				
 			}
 				

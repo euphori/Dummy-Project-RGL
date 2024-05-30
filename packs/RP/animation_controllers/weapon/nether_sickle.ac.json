@@ -94,8 +94,29 @@
 						},
 						{
 							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+						},
+						{
+							"double_jump" : "(q.any_animation_finished || v.jump_done) && q.is_jumping"
 						}
 					]
+				},
+				"double_jump":{
+				"blend_transition": 0.3,
+				"blend_via_shortest_path": true,
+				  "animations": [
+					  "netherite_sickle.tpp.double_jump"
+				  ],
+				  "transitions": [
+					{
+						"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
+					},
+					{
+						"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
+					},
+					{
+						"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+					}
+				  ]
 				},
 				"attack_basic1":{
 					"blend_transition": 0.3,

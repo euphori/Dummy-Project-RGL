@@ -8,22 +8,38 @@
                   "transitions": [
                     {
                       "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                     
+                    },
+                    {
+                      "exit" : "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur')"
                     }
                   ]
             },
             "default":{ 
               "on_entry": [
-                "@s dummy:atk.reset"
-
+                "@s dummy:atk.reset",
+                "/effect @s fire_resistance 1000000 1 false",
+                "/enchant @s 13 2"
               ],
-                  "transitions": [
-                    {
-                      "attack_basic1": "v.attack_time"
-                    },
-                    {
-                      "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
-                    }
-                ]
+             
+              "transitions": [
+                {
+                  "attack_basic1": "v.attack_time"
+                },
+                {
+                  "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                }
+            ]
+            },
+            "exit":{
+              "on_entry": [
+                "/effect @s fire_resistance 0"
+              ],
+              "transitions": [
+                {
+                  "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                }
+              ]
             },
             "attack_basic1":{
                 "animations": [
@@ -32,11 +48,11 @@
                 "on_entry": [
                    "@s dummy:atk.increment",
                    "/say attack_basic1",
-                   "v.sickle = 0;"
+                   "v.sword = 0;"
                   ],
                 "transitions": [
                     {
-                        "attack_basic2": "v.attack_time && v.sickle"
+                        "attack_basic2": "v.attack_time && v.sword"
                       },
                       {
                         "default": "q.all_animations_finished"
@@ -50,14 +66,14 @@
               "on_entry": [
                 "@s dummy:atk.increment",
                 "/say attack_basic2",
-                "v.sickle = 0;"
+                "v.sword = 0;"
                ],
                 "animations": [
                     "golden_kings_excalibur.tpp.attack_basic2"
                 ],
                 "transitions": [
                      {
-                        "attack_basic3": "v.attack_time && v.sickle"
+                        "attack_basic3": "v.attack_time && v.sword"
                       },
                       {
                         "default": "q.all_animations_finished"
@@ -71,7 +87,7 @@
               "on_entry": [
                 "@s dummy:atk.increment",
                 "/say attack_basic2",
-                "v.sickle = 0;"
+                "v.sword = 0;"
                ],
               "animations": [
                   "golden_kings_excalibur.tpp.attack_basic3"
