@@ -20,6 +20,9 @@
                     "attack_basic1": "v.attack_time"
                   },
                   {
+                    "throw" : "q.is_using_item"
+                  },
+                  {
                     "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
                   }
               ]
@@ -40,6 +43,7 @@
                     {
                       "default": "q.all_animations_finished"
                     },
+                    
                     {
                       "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
                     }
@@ -61,6 +65,7 @@
                     {
                       "default": "v.sickle == 2"
                     },
+                    
                     {
                       "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
                     }
@@ -82,10 +87,31 @@
                   {
                     "default": "q.all_animations_finished"
                   },
+                 
                   {
                     "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
                   }
             ]
+        },
+        "throw":{
+          "on_entry": [
+            "@s dummy:atk.state.-1",
+            "/say throw"
+          ],
+          "animations": [
+            "netherite_sickle.tpp.throw"
+          ],
+          "transitions": [
+            {
+              "attack_basic1": "v.attack_time && q.all_animations_finished"
+            },
+            {
+              "default": "q.all_animations_finished && !q.is_using_item"
+            },
+            {
+              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'kubo:netherite_sickle') && !q.is_crawling)"
+            }
+          ]
         }
 
       }

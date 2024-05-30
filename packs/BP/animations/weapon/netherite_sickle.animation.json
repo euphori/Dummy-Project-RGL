@@ -34,6 +34,15 @@
                      "v.sickle = 1;"
                 ]
             }
+        },
+        "animation.netherite_sickle.tpp.throw":{
+            "animation_length": 1,
+            "loop" :false,
+            "timeline": {
+                "1": [ 
+                     "v.sickle = 1;"
+                ]
+            }
         }
     }
 }

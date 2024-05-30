@@ -11,7 +11,8 @@
 				"controller.golden_kings_excalibur" : "controller.animation.golden_kings_excalibur",
 				"netherite_sickle.tpp.attack_basic1" : "animation.netherite_sickle.tpp.attack_basic1",
 				"netherite_sickle.tpp.attack_basic2" : "animation.netherite_sickle.tpp.attack_basic2",
-				"netherite_sickle.tpp.attack_basic3" : "animation.netherite_sickle.tpp.attack_basic3"
+				"netherite_sickle.tpp.attack_basic3" : "animation.netherite_sickle.tpp.attack_basic3",
+				"netherite_sickle.tpp.throw" : "animation.netherite_sickle.tpp.throw"
 			},
 			"scripts": {
 				"animate": [
@@ -210,7 +211,12 @@
 				"set_property":{
 					"dummy:atk_state" : 0
 				}
-			},
+			}, 
+			"dummy:atk.state.-1": {
+				"set_property": {
+				  "dummy:atk_state": -1
+				}
+			  },
 			
 			"minecraft:gain_bad_omen": {
 				"add": {

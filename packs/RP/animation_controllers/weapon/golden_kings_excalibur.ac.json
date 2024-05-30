@@ -29,6 +29,9 @@
 						},
 						{
 							"run": "q.modified_move_speed>0.14"
+						},
+						{
+							"sneak": "q.property('dummy:atk_state') == 0 && q.is_sneaking"
 						}
 					]
 					
@@ -55,6 +58,9 @@
 						},
 						{
 							"default": "!(q.modified_move_speed > 0.14)"
+						},
+						{
+							"sneak": "q.property('dummy:atk_state') == 0 && q.is_sneaking"
 						}
 					]
 				},
@@ -123,6 +129,30 @@
 						{
 							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
 						}
+					]
+				},
+				"sneak":{
+					"animations": [
+						"golden_kings_excalibur.tpp.sneak"
+					],
+					"transitions": [
+						
+							{
+								"attack_basic1": "v.attack_time"
+							},
+							{
+								"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:golden_kings_excalibur')"
+							},
+							{
+								"check": "(q.is_emoting&&!q.is_crawling)"
+							},
+							{
+								"run": "q.modified_move_speed>0.14 && !q.is_sneaking"
+							},
+							{
+								"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+							}
+						
 					]
 				}
 				

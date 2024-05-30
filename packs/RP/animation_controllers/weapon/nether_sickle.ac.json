@@ -18,9 +18,6 @@
 						},
 						{
 							"default": "!v.is_paperdoll && !q.is_emoting "
-						},
-						{
-							"jump": "q.is_jumping && !q.is_riding"
 						}
 					]
 				},
@@ -45,6 +42,9 @@
 						},
 						{
 							"jump": "q.is_jumping && !q.is_riding"
+						},
+						{
+							"throw" : "q.property('dummy:atk_state') == -1"
 						}
 					]
 					
@@ -67,6 +67,9 @@
 						},
 						{
 							"jump": "q.is_jumping && !q.is_riding"
+						},
+						{
+							"throw" : "q.property('dummy:atk_state') == -1"
 						}
 					]
 				},
@@ -162,7 +165,29 @@
 							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
 						}
 					]
+				},
+				"throw":{
+					"animations": [
+						"netherite_sickle.tpp.throw"
+					],
+					"transitions": [
+					
+						{
+							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
+						},
+						{
+							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
+						},
+						{
+							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
+						},
+						{
+							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+						}
+					
+					]
 				}
+				
 				
 			}
 		}

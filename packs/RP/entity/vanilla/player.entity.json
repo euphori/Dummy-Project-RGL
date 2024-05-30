@@ -121,6 +121,7 @@
 				"golden_kings_excalibur.tpp.attack_basic1": "animation.golden_kings_excalibur.tpp.attack_basic1",
 				"golden_kings_excalibur.tpp.attack_basic2": "animation.golden_kings_excalibur.tpp.attack_basic2",
 				"golden_kings_excalibur.tpp.attack_basic3": "animation.golden_kings_excalibur.tpp.attack_basic3",
+				"golden_kings_excalibur.tpp.sneak" : "animation.golden_kings_excalibur.sneak",
 
 				"controller.netherite_sickle": "controller.animation.netherite_sickle",
 				"netherite_sickle.tpp.run": "animation.netherite_sickle.tpp.run",
@@ -128,9 +129,15 @@
 				"netherite_sickle.tpp.jump": "animation.netherite_sickle.tpp.jump",
 				"netherite_sickle.tpp.attack_basic1": "animation.netherite_sickle.tpp.attack_basic1",
 				"netherite_sickle.tpp.attack_basic2": "animation.netherite_sickle.tpp.attack_basic2",
-				"netherite_sickle.tpp.attack_basic3": "animation.netherite_sickle.tpp.attack_basic3"
+				"netherite_sickle.tpp.attack_basic3": "animation.netherite_sickle.tpp.attack_basic3",
+				"netherite_sickle.tpp.throw" : "animation.netherite_sickle.tpp.throw"
 
 
+			},
+			"particle_effects": {
+				"netherite_sickle_throw_1": "dummy:netherite_sickle_throw_1",
+				"netherite_sickle_throw_2": "dummy:netherite_sickle_throw_2",
+				"golden_kings_excalibur_sneak" : "dummy:golden_kings_excalibur_sneak"
 			},
 			"render_controllers": [
 				{
