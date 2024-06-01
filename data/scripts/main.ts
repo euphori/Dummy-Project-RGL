@@ -7,7 +7,7 @@ import {doubleJump} from "./netherite_sickle.ts"
 
 mc.system.runInterval(() => {
   mc.world.getAllPlayers().forEach((player) => {
- player.runCommandAsync(`say ${player.isJumping}`);
+ //player.runCommandAsync(`say ${player.}`);
   });
 }, mc.TicksPerSecond);
 

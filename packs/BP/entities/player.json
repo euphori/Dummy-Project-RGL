@@ -225,6 +225,16 @@
 				  "dummy:atk_state": -1
 				}
 			  },
+			"dummy:jump_state.1":{
+				"set_property": {
+					"dummy:jump_state": 1
+				}
+			},
+			"dummy:jump_state.0":{
+				"set_property": {
+					"dummy:jump_state": 0
+				}
+			},
 			
 			"minecraft:gain_bad_omen": {
 				"add": {

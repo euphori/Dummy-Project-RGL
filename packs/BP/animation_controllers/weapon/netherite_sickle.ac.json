@@ -12,11 +12,9 @@
                 ]
           },
           "default":{ 
-            "on_entry": [
-              //"v.jump_done = 0;",
-              //"/say default",
-              "@s dummy:atk.reset"
-            // "/effect @s jump_boost 3 3 true"
+            "on_entry": [       
+              "@s dummy:atk.reset",
+              "@s dummy:dummy:jump_state.0"
             ],
                 "transitions": [
                   {
@@ -101,8 +99,9 @@
         },
         "throw":{
           "on_entry": [
-            "@s dummy:atk.state.-1",
-            "/say throw"
+            "/say throw",
+            "@s dummy:atk.state.-1"
+            
           ],
           "animations": [
             "netherite_sickle.tpp.throw"
@@ -164,7 +163,8 @@
           "on_entry": [
             "/say double jump",
             "/scriptevent dummy:double_jump",
-            "v.has_jumped = 0;"
+            "v.has_jumped = 0;",
+            "@s dummy:dummy:jump_state.1"
           ],
           "animations": [
             "netherite_sickle.tpp.double_jump"

@@ -96,7 +96,7 @@
 							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
 						},
 						{
-							"double_jump" : "(q.any_animation_finished || v.jump_done) && q.is_jumping"
+							"double_jump" : "q.property('dummy:jump_state') == 1"
 						}
 					]
 				},

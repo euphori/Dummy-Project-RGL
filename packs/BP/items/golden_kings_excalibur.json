@@ -13,6 +13,12 @@
 			},
 			"minecraft:icon": {
 				"texture": "golden_kings_excalibur"
+			},
+			"minecraft:use_duration": {
+				"value": 72000
+			},
+			"minecraft:food": {
+				"can_always_eat": true
 			}
 		}
 	}
