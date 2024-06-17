@@ -1,5 +1,5 @@
 {
-	"format_version": "1.10.0",
+	"format_version": "1.20.50",
 	"animation_controllers": {
 		"controller.animation.golden_kings_excalibur": {
 			"initial_state": "default",
@@ -19,7 +19,7 @@
 					],
 					"transitions": [
 						{
-							"attack_basic1": "v.attack_time"
+							"attack_basic1": "q.property('dummy:atk_state') == 1"
 						},
 						{
 							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:golden_kings_excalibur')"
@@ -32,9 +32,47 @@
 						},
 						{
 							"sneak": "q.property('dummy:atk_state') == 0 && q.is_sneaking"
+						},
+						{
+							"hold_check" : "q.property('dummy:atk_state') == -1"
 						}
 					]
 					
+				},
+				
+				"knight_awakened":{
+					"animations": [
+						"golden_kings_excalibur.tpp.knight_awakened"
+					],
+					"transitions": [
+						
+						{
+							"attack_basic1": "v.attack_time"
+						},
+						{
+							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:golden_kings_excalibur')"
+						},
+						{
+							"check": "(q.is_emoting&&!q.is_crawling)"
+						},
+						{
+							"run": "q.modified_move_speed>0.14 && !q.is_sneaking && q.all_animations_finished"
+						},
+						{
+							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+						}
+						
+					]
+				},
+				"hold_check":{
+					"animations": [
+						"golden_kings_excalibur.tpp.knight_awakened"
+					],
+					"transitions": [
+						{
+							"knight_awakened": "q.property('dummy:atk_state') == -1"
+						}
+					]
 				},
 				"check": {
 					"transitions": [
@@ -52,6 +90,9 @@
 					"animations": [
 						"golden_kings_excalibur.tpp.run"
 					],
+					"on_entry": [
+						"v.blend = q.life_time + 0.3;"
+					  ],
 					"transitions": [
 						{
 							"initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur')"
@@ -61,12 +102,19 @@
 						},
 						{
 							"sneak": "q.property('dummy:atk_state') == 0 && q.is_sneaking"
+						},
+						{
+							"hold_check" : "q.property('dummy:atk_state') == -2"
+						},
+						{
+							"attack_basic1" : "q.property('dummy:atk_state') == 1"
 						}
 					]
 				},
 				
 				"attack_basic1":{
-					
+					"blend_transition": 0.3,
+					"blend_via_shortest_path": true,
 					"animations": [
 						"golden_kings_excalibur.tpp.attack_basic1"
 					],
@@ -89,7 +137,8 @@
 					]
 				},
 				"attack_basic2":{
-					
+					"blend_transition": 0.3,
+					"blend_via_shortest_path": true,
 					"animations": [
 						"golden_kings_excalibur.tpp.attack_basic2"
 					],
@@ -112,7 +161,8 @@
 					]
 				},
 				"attack_basic3":{
-				
+					"blend_transition": 0.3,
+					"blend_via_shortest_path": true,
 					"animations": [
 						"golden_kings_excalibur.tpp.attack_basic3"
 					],
@@ -128,10 +178,15 @@
 						},
 						{
 							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+						},
+						{
+							"attack_basic1" : "q.property('dummy:atk_state') == 1"
 						}
 					]
 				},
 				"sneak":{
+					"blend_transition": 0.3,
+					"blend_via_shortest_path": true,
 					"animations": [
 						"golden_kings_excalibur.tpp.sneak"
 					],
@@ -151,6 +206,9 @@
 							},
 							{
 								"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+							},
+							{
+								"knight_awakened" : "q.property('dummy:atk_state') == -1"
 							}
 						
 					]

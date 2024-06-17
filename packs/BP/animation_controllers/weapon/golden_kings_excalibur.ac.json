@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.20.50",
     "animation_controllers": {
        "controller.animation.golden_kings_excalibur":{
         "initial_state": "check",
@@ -27,74 +27,71 @@
                   "attack_basic1": "v.attack_time"
                 },
                 {
-                  "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                  "exit": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                },
+                {
+                  "knight_awakened": "q.is_using_item"
+                },
+                {
+                  "sneak":"q.is_sneaking"
                 }
             ]
             },
-            "exit":{
-              "on_entry": [
-                "/effect @s fire_resistance 0"
-              ],
-              "transitions": [
-                {
-                  "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
-                }
-              ]
-            },
-            "attack_basic1":{
-                "animations": [
-                    "golden_kings_excalibur.tpp.attack_basic1"
-                ],
-                "on_entry": [
-                   "@s dummy:atk.increment",
-                   "/say attack_basic1",
-                   "v.sword = 0;"
-                  ],
-                "transitions": [
-                    {
-                        "attack_basic2": "v.attack_time && v.sword"
-                      },
-                      {
-                        "default": "q.all_animations_finished"
-                      },
-                      {
-                        "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
-                      }
-                ]
-            },
-            "attack_basic2":{
-              "on_entry": [
-                "@s dummy:atk.increment",
-                "/say attack_basic2",
-                "v.sword = 0;"
-               ],
-                "animations": [
-                    "golden_kings_excalibur.tpp.attack_basic2"
-                ],
-                "transitions": [
-                     {
-                        "attack_basic3": "v.attack_time && v.sword"
-                      },
-                      {
-                        "default": "q.all_animations_finished"
-                      },
-                      {
-                        "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
-                      }
-                ]
-            },
-            "attack_basic3":{
-              "on_entry": [
-                "@s dummy:atk.increment",
-                "/say attack_basic2",
-                "v.sword = 0;"
-               ],
+             
+          "hold_check":{
+            "on_entry": [
+              "v.excalibur_f = q.life_time + 0.3;",
+              "@s dummy:atk.state.-2"
+            ],
+            "transitions": [
+              {
+                "knight_awakened": "!q.is_using_item && q.life_time <= v.excalibur_f"
+              }
+            ]
+          },
+          "knight_awakened":{
+            "on_entry": [
+              "@s dummy:atk.state.-1"
+            ],
+            "animations": [
+              "golden_kings_excalibur.tpp.knight_awakened"
+            ],
+            "transitions": [
+            
+              {
+                "attack_basic1" : "v.attack_time && q.all_animations_finished"
+              },
+              {
+                "default": "q.all_animations_finished"
+              },
+              {
+                "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+              }
+              
+            ]
+          },
+          "exit":{
+            "on_entry": [
+              "/effect @s fire_resistance 0"
+            ],
+            "transitions": [
+              {
+                "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+              }
+            ]
+          },
+          "attack_basic1":{
               "animations": [
-                  "golden_kings_excalibur.tpp.attack_basic3"
+                  "golden_kings_excalibur.tpp.attack_basic1"
               ],
+              "on_entry": [
+                  "@s dummy:atk.state.1",
+                  "/say attack_basic1",
+                  "v.sword = 0;"
+                ],
               "transitions": [
                     {
-                        "attack_basic1" : "v.attack_time && q.all_animations_finished"
+                      "attack_basic2": "v.attack_time && v.sword"
                     },
                     {
                       "default": "q.all_animations_finished"
@@ -103,7 +100,65 @@
                       "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
                     }
               ]
+          },
+          "attack_basic2":{
+            "on_entry": [
+              "@s dummy:atk.state.2",
+              "/say attack_basic2",
+              "v.sword = 0;"
+              ],
+              "animations": [
+                  "golden_kings_excalibur.tpp.attack_basic2"
+              ],
+              "transitions": [
+                    {
+                      "attack_basic3": "v.attack_time && v.sword"
+                    },
+                    {
+                      "default": "q.all_animations_finished"
+                    },
+                    {
+                      "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                    }
+              ]
+          },
+          "attack_basic3":{
+            "on_entry": [
+              "@s dummy:atk.state.3",
+              "/say attack_basic3",
+              "v.sword = 0;"
+              ],
+            "animations": [
+                "golden_kings_excalibur.tpp.attack_basic3"
+            ],
+            "transitions": [
+                  {
+                      "attack_basic1" : "v.attack_time && q.all_animations_finished"
+                  },
+                  {
+                    "default": "q.all_animations_finished"
+                  },
+                  {
+                    "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
+                  }
+            ]
+          },
+          "sneak":{
+            "on_entry": [
+              "/scoreboard objectives add timer",
+              "/scriptevent dummy:apply_effect {\"effect\" :\"strength\",\"duration\" :8,\"amplifier\" :4}",
+              "/scriptevent dummy:apply_effect {\"effect\" :\"health_boost\",\"duration\" :8,\"amplifier\" :9}"
+            ],
+            "animations": [
+              "golden_kings_excalibur.tpp.sneak"
+            ],
+            "transitions": [
+              {
+                "default": "q.all_animations_finished"
+              }
+            ]
           }
+         
 
         }
         }

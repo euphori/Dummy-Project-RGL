@@ -1,0 +1,26 @@
+{
+    "format_version": "1.20.40",
+    "animations": {
+        "animation.devilmon.attack":{
+            "animation_length": 1,
+            "loop":false,
+            "timeline": {
+                "0.0": []
+            }
+        },
+      "animation.devilmon.death":{
+            "animation_length": 2,
+            "loop":false,
+            "timeline": {
+                "0.0": []
+            }
+        },
+        "animation.devilmon.spit":{
+            "animation_length": 2,
+            "loop":false,
+            "timeline": {
+                "0.0": []
+            }
+        }
+    }
+}

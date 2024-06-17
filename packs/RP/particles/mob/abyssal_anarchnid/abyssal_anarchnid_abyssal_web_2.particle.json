@@ -1,0 +1,74 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "dummy:abyssal_anarchnid_abyssal_web_2",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particles/mob/abyssal_anarchnid/abyssal_anarchnid_abyssal_web_2"
+			}
+		},
+		"curves": {
+			"variable.size1": {
+				"type": "bezier_chain",
+				"input": "variable.particle_age/variable.particle_lifetime",
+				"nodes": {
+					"0.0": {
+						"value": 0,
+						"slope": 0
+					},
+					"1.0": {
+						"value": 0,
+						"slope": 0
+					},
+					"0.08": {
+						"value": 0.1,
+						"slope": 0
+					},
+					"0.76": {
+						"value": 0.1,
+						"slope": 0
+					}
+				}
+			},
+			"variable.colour": {
+				"type": "linear",
+				"input": "v.particle_age",
+				"horizontal_range": "v.particle_lifetime",
+				"nodes": [0, 1]
+			}
+		},
+		"components": {
+			"minecraft:emitter_rate_steady": {
+				"spawn_rate": 300,
+				"max_particles": 30
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 0.3
+			},
+			"minecraft:emitter_shape_sphere": {
+				"offset": [0, 0.5, 0],
+				"radius": 1,
+				"direction": ["Math.Random(-3, 3)", "Math.Random(-3, 3)", -22]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "Math.Random(3,6)"
+			},
+			"minecraft:particle_initial_speed": "Math.Random(20, 30)",
+			"minecraft:particle_appearance_billboard": {
+				"size": ["(6*v.particle_random_2)*variable.size1", "(6*v.particle_random_2)*variable.size1"],
+				"facing_camera_mode": "rotate_xyz"
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "variable.colour",
+					"gradient": {
+						"0.0": "#73FFFFFF",
+						"0.82": "#66FFFFFF",
+						"1.0": "#00FFFFFF"
+					}
+				}
+			}
+		}
+	}
+}

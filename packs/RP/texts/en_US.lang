@@ -9,3 +9,6 @@ item.spawn_egg.entity.dummy:devilmon.name=Spawn Devilmon
 
 entity.dummy:abyssal_anarchnid.name=Abyssal Anarchnid
 item.spawn_egg.entity.dummy:abyssal_anarchnid.name=Spawn Abyssal Anarchnid
+
+entity.dummy:abyssal_anarchnid_web.name=Abyssal Anarchnid
+item.spawn_egg.entity.dummy:abyssal_anarchnid_web.name=Abyssal Anarchnid

@@ -12,7 +12,8 @@
 				"golden_kings_excalibur.tpp.attack_basic1" : "animation.golden_kings_excalibur.tpp.attack_basic1",
 				"golden_kings_excalibur.tpp.attack_basic2" : "animation.golden_kings_excalibur.tpp.attack_basic2",
 				"golden_kings_excalibur.tpp.attack_basic3" : "animation.golden_kings_excalibur.tpp.attack_basic3",
-
+				"golden_kings_excalibur.tpp.knight_awakened" : "animation.golden_kings_excalibur.tpp.knight_awakened",
+				"golden_kings_excalibur.tpp.sneak" : "animation.golden_kings_excalibur.tpp.sneak",
 
 				"netherite_sickle.tpp.attack_basic1" : "animation.netherite_sickle.tpp.attack_basic1",
 				"netherite_sickle.tpp.attack_basic2" : "animation.netherite_sickle.tpp.attack_basic2",
@@ -41,51 +42,10 @@
 					"client_sync": true,
 					"type": "bool",
 					"default": false
-				  }
-				
-				
+				}
 			}
 				
 			
-		},
-		"component_groups": {
-			"minecraft:add_bad_omen": {
-				"minecraft:spell_effects": {
-					"add_effects": [
-						{
-							"effect": "bad_omen",
-							"duration": 6000,
-							"visible": false,
-							"display_on_screen_animation": true
-						}
-					]
-				},
-				"minecraft:timer": {
-					"time": [
-						0,
-						0
-					],
-					"looping": false,
-					"time_down_event": {
-						"event": "minecraft:clear_add_bad_omen",
-						"target": "self"
-					}
-				}
-			},
-			"minecraft:clear_bad_omen_spell_effect": {
-				"minecraft:spell_effects": {}
-			},
-			"minecraft:raid_trigger": {
-				"minecraft:raid_trigger": {
-					"triggered_event": {
-						"event": "minecraft:remove_raid_trigger",
-						"target": "self"
-					}
-				},
-				"minecraft:spell_effects": {
-					"remove_effects": "bad_omen"
-				}
-			}
 		},
 		"components": {
 			"minecraft:experience_reward": {
@@ -209,7 +169,48 @@
 				}
 			}
 		},
+		"component_groups": {
+			"minecraft:add_bad_omen": {
+				"minecraft:spell_effects": {
+					"add_effects": [
+						{
+							"effect": "bad_omen",
+							"duration": 6000,
+							"visible": false,
+							"display_on_screen_animation": true
+						}
+					]
+				},
+				"minecraft:timer": {
+					"time": [
+						0,
+						0
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "minecraft:clear_add_bad_omen",
+						"target": "self"
+					}
+				}
+			},
+			"minecraft:clear_bad_omen_spell_effect": {
+				"minecraft:spell_effects": {}
+			},
+			"minecraft:raid_trigger": {
+				"minecraft:raid_trigger": {
+					"triggered_event": {
+						"event": "minecraft:remove_raid_trigger",
+						"target": "self"
+					}
+				},
+				"minecraft:spell_effects": {
+					"remove_effects": "bad_omen"
+				}
+			}
+		},
 		"events": {
+			
+			
 			"dummy:atk.increment" :{
 				"set_property":{
 					"dummy:atk_state" : "q.property('dummy:atk_state') + 1"
@@ -220,21 +221,46 @@
 					"dummy:atk_state" : 0
 				}
 			}, 
+			"dummy:atk.state.-2": {
+				"set_property": {
+				  "dummy:atk_state": -2
+				}
+			  },
 			"dummy:atk.state.-1": {
 				"set_property": {
 				  "dummy:atk_state": -1
 				}
 			  },
+			"dummy:atk.state.1": {
+			"set_property": {
+				"dummy:atk_state": 1
+			}
+			},
+			"dummy:atk.state.2": {
+				"set_property": {
+					"dummy:atk_state": 2
+				}
+			},
+			"dummy:atk.state.3": {
+				"set_property": {
+					"dummy:atk_state": 3
+				}
+			},
+	
+
+
 			"dummy:jump_state.1":{
 				"set_property": {
 					"dummy:jump_state": 1
 				}
 			},
+			
 			"dummy:jump_state.0":{
 				"set_property": {
 					"dummy:jump_state": 0
 				}
 			},
+			
 			
 			"minecraft:gain_bad_omen": {
 				"add": {

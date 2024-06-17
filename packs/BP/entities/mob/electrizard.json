@@ -4,32 +4,283 @@
         "description": {
             "identifier": "dummy:electrizard",
             "is_spawnable": true,
-            "is_summonable": true
+            "is_summonable": true,
+            "animations": {
+                "root" : "controller.animation.electrizard",
+                "attack_controller" : "controller.animation.electrizard.attack",
+                "attack" : "animation.electrizard.attack",
+                "death" : "animation.electrizard.death",
+                "thunderwave" : "animation.electrizard.thunderwave",
+                "stungrowl" : "animation.electrizard.stungrowl",
+                "hitground" : "animation.electrizard.hitground"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "root" : "!q.is_stunned"
+                        
+                    },
+                    {
+                        "attack_controller": "!q.is_stunned"
+                    }
+                ]
+            },
+            "properties": {
+                "dummy:atk":{
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [0,3],
+                    "default": 0
+                },
+                "dummy:dead": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                  }
+            }
         },
         "components": {
             "minecraft:physics": {},
             "minecraft:movement": {
-                "value": 0.25
+                "value": 1
             },
             "minecraft:movement.basic": {},
             "minecraft:jump.static": {},
             "minecraft:navigation.walk": {
                 "avoid_water": true
             },
-            "minecraft:behavior.tempt": {
-                "priority": 1,
-                "speed_multiplier": 1.4,
-                "items": ["diamond"],
-                "within_radius": 7.0
+            "minecraft:type_family": {
+            "family": [ "boss", "monster", "mob", "electrizard","dragon" ]
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1
             },
             "minecraft:behavior.random_stroll":
             {
                 "priority": 3,
-                "speed_multiplier": 0.8
+                "speed_multiplier": 0.3
+            },
+            "minecraft:health": {
+                "value": 700,
+                "max": 700
             },
             "minecraft:experience_reward": {
-                "on_death": 8
+                "on_death": "query.last_hit_by_player ? 50:20"
+            },
+            "minecraft:timer": {
+                "looping": true,
+                "randomInterval":true,
+                "time": [0.0, 3.0],
+                "time_down_event": {
+                    "event":"dummy:summon_lightning"
+                }
+              },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 2,
+                "must_see": true,
+                "reselect_targets": true,
+                "within_radius": 25.0,
+                
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "max_dist": 32
+                    }
+                ]
+            },
+            
+
+            "minecraft:behavior.delayed_attack": {
+                "priority": 0,
+                "attack_once": false,
+                "track_target": true,
+                "require_complete_path": false,
+                "random_stop_interval": 0,
+                "reach_multiplier": 1.5,
+                "speed_multiplier": 1.0,
+                "attack_duration": 0.70,
+                "hit_delay_pct": 0.5
+            },
+            "minecraft:target_nearby_sensor": {
+                
+                "inside_range": 15.0,
+                "outside_range": 16.0,
+                "must_see": false,
+                "on_inside_range": {
+                "event": "player_nearby",
+                "target": "self"
+                }
+            },
+            "minecraft:on_hurt": {
+                "event": "minecraft:on_hurt_event",
+                "target": "self"
+            },
+            "minecraft:on_hurt_by_player": {
+                "event": "minecraft:on_hurt_event",
+                "target": "self"
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    
+                  {
+                    "deals_damage": true,
+                    "on_damage": {
+                      "event": "dummy:dead",
+                      "filters": {
+                        "test": "has_damage",
+                        "value": "fatal"
+                      }
+                    }
+                  },
+                  {
+                    "cause": "lightning",
+                    "deals_damage": false
+                    
+                  }
+                ]
+            },
+           
+            "minecraft:boss":{
+                "hud_range": 55,
+                "name": "Electrizard",
+                "should_darken_sky": true
+            },
+            "minecraft:collision_box": {
+                "height": 4,
+                "width": 2
+            }
+            
+        },
+        "component_groups": {
+            "despawn": {
+                "minecraft:instant_despawn": {}
+            },
+            "avoid_player":{
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 0,
+                    "entity_types": [
+                    {   
+                        "filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "player"
+                        },
+                        "max_dist": 15,
+                        "walk_speed_multiplier": 0.8,
+                        "sprint_speed_multiplier": 1.33
+                    }
+                ]
+                }
+            }
+            
+            
+        },
+        
+        "events": {
+            "player_nearby": {
+                "sequence": [
+                    {
+                        "queue_command": {
+                            "command": "weather thunder 999"
+                        }
+                    }
+                    
+                ]
+            },
+            "dummy:summon_lightning":{
+                "sequence": [
+                    
+                    {
+                        "queue_command": {
+                            "command": "say thunder!"
+                        }
+                    },
+                    {
+                        "queue_command": {
+                        "command":  "scriptevent dummy:electrizard_lightning",
+                        "target": "self"
+                        }
+                    }
+                    
+                ]
+                   
+            },
+            "dummy:avoid_player":{
+                "add": {
+                    "component_groups": [
+                        "avoid_player"
+                    ]
+                }
+            },
+        
+            "dummy:atk.0": {
+            "set_property": {
+                "dummy:atk": 0
+            }
+            },
+            "dummy:atk.1": {
+                "set_property": {
+                  "dummy:atk": 1
+                }
+            },
+            "dummy:atk.2": {
+                "set_property": {
+                  "dummy:atk": 2
+                }
+            },
+            "dummy:atk.3": {
+                "set_property": {
+                  "dummy:atk": 3
+                }
+            },
+            "dummy:dead": {
+                "set_property": {
+                  "dummy:dead": true,
+                  "dummy:atk": 0
+                }   
+            },
+            "dummy:despawn":{
+                "add": {
+                    "component_groups": [
+                        "despawn"
+                    ]
+                }
+            },
+            "dummy:random_attack": {
+                "randomize": [
+                  {
+                    "trigger": {
+                      "event": "dummy:atk.1"
+                    }
+                  },
+                  {
+                    "trigger": {
+                      "event": "dummy:atk.2"
+                    }
+                  },
+                  {
+                    "trigger": {
+                      "event": "dummy:atk.3"
+                    }
+                  },
+                  {
+                    "trigger": {
+                      "event": "dummy:atk.4"
+                    }
+                  }
+                ]
             }
         }
+            
+            
+                
+            
     }
+       
+    
+    
 }

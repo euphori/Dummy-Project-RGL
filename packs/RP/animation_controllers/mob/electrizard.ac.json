@@ -1,38 +1,148 @@
 {
-    "format_version": "1.10.0",
-    "animation_controllers": {
-      "controller.animation.electrizard": {
-        "states": {
-            "default": {
-              "transitions":[
-                 {"idle": "q.is_on_ground"}
-              ]
+  "format_version": "1.20.50",
+  "animation_controllers": {
+    "controller.animation.electrizard.attack": {
+      "states": {
+          "default": {
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+
+            "transitions":[
+              {
+                "attack" : "q.property('dummy:atk') == 1"
+              },
+              {
+                "thunderwave" : "q.property('dummy:atk') == 2"
+              },
+              {
+                "hitground" : "q.property('dummy:atk') == 3"
+              },
+              {
+                "stungrowl" : "q.property('dummy:atk') == 4"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          
+          "attack":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "attack"
+            ],
+            "transitions": [
+              {
+                "default": " q.property('dummy:atk') == 0"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          "thunderwave":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "thunderwave"
+            ],
+            "transitions": [
+              {
+                "default": " q.property('dummy:atk') != 2"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          "hitground":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "hitground"
+            ],
+            "transitions": [
+              {
+                "default": " q.property('dummy:atk') != 3"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          "stungrowl":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "stungrowl"
+            ],
+            "transitions": [
+              {
+                "default": " q.property('dummy:atk') != 4"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          "death":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "death"
+            ]
+           
+            
+          }
+      }
+    },
+    "controller.animation.electrizard.walk":{
+      "initial_state": "standing",
+      "states": {
+        "standing":{
+          "animations": [
+            "idle",
+            "idle2"
+          ],
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.1"
             },
-            "idle":{
-                "animations": [
-                    "idle"
-                ],
-                "transitions": [
-                    {
-                      "default": "q.all_animations_finished && q.is_on_ground"
-                       
-                    },
-                    {
-                      "walk" : "q.property(q.modified_move_speed > 0.14)  && q.is_on_ground"
-                    }
-                ]
-            },
-            "walk":{
-              "animations": [
-                "walk"
-              ],
-              "transitions": [
-                {
-                  "default": "q.all_animations_finished && q.is_on_ground"
-                }
-              ]
+            {
+              "run": "q.is_sprinting"
             }
+          ]
+        },
+        "walk":{
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": [
+            "walk"
+           ],
+          "transitions": [
+            {
+              "standing":  "q.modified_move_speed < 0.1"
+            },
+            {
+              "run": "q.is_sprinting"
+            }
+          ]
+        },
+        "run":{
+          "animations": [
+            "run"
+          ],
+          "transitions": [
+            {
+              "standing":  "q.modified_move_speed < 0.1"
+            },
+            {
+              "walk": "q.modified_move_speed > 0.1"
+            }
+          ]
         }
+      }
     }
   }
 }

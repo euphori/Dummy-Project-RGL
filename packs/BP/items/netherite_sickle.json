@@ -1,5 +1,5 @@
 {
-	"format_version": "1.20.0",
+	"format_version": "1.20.50",
 	"minecraft:item": {
 		"description": {
 			"identifier": "dummy:netherite_sickle",
@@ -12,8 +12,9 @@
 			"minecraft:display_name": {
 				"value": "Netherite Sickle"
 			},
-			"minecraft:use_duration": {
-				"value": 72000
+			"minecraft:use_modifiers": {
+				"movement_modifier": 1,
+				"use_duration": 14
 			},
 			"minecraft:food": {
 				"can_always_eat": true
@@ -23,6 +24,9 @@
 			},
 			"minecraft:icon": {
 				"texture": "netherite_sickle"
+			},
+			"minecraft:damage": {
+				"value": 10
 			}
 			
 		}

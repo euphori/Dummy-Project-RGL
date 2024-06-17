@@ -1,5 +1,5 @@
 {
-	"format_version": "1.20.0",
+	"format_version": "1.20.50",
 	"minecraft:item": {
 		"description": {
 			"identifier": "dummy:golden_kings_excalibur"
@@ -8,17 +8,18 @@
 			"minecraft:display_name": {
 				"value": "Golden Kings Excalibur"
 			},
+			"minecraft:use_modifiers": {
+				"movement_modifier": 1,
+				"use_duration": 14
+			},
+			"minecraft:food": {
+				"can_always_eat": true
+			},
 			"minecraft:max_stack_size": {
 				"value": 1
 			},
 			"minecraft:icon": {
 				"texture": "golden_kings_excalibur"
-			},
-			"minecraft:use_duration": {
-				"value": 72000
-			},
-			"minecraft:food": {
-				"can_always_eat": true
 			}
 		}
 	}

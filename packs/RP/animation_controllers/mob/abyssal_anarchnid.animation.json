@@ -1,38 +1,96 @@
 {
-    "format_version": "1.10.0",
-    "animation_controllers": {
-      "controller.animation.abyssal_anarchnid": {
-        "states": {
-            "default": {
-              "transitions":[
-                 {"idle": "q.is_on_ground"}
-              ]
-            },
-            "idle":{
-                "animations": [
-                    "idle"
-                ],
-                "transitions": [
-                    {
-                      "default": "q.all_animations_finished && q.is_on_ground"
-                       
-                    },
-                    {
-                      "walk" : "q.property(q.modified_move_speed > 0.14)  && q.is_on_ground"
-                    }
-                ]
-            },
-            "walk":{
-              "animations": [
-                "walk"
-              ],
-              "transitions": [
-                {
-                  "default": "q.all_animations_finished && q.is_on_ground"
-                }
-              ]
+  "format_version": "1.20.50",
+  "animation_controllers": {
+    "controller.animation.abyssal_anarchnid.attack": {
+      "states": {
+          "default": {
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "transitions":[
+              {
+                "attack" : "q.property('dummy:atk') == 1"
+              },
+              {
+                "web" : "q.property('dummy:atk') == 2"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+              
+            ]
+          },
+          
+          "attack":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "attack"
+            ],
+            "transitions": [
+              {
+                "default": "q.property('dummy:atk') != 1"
+              },
+              {
+                "web" : "q.property('dummy:atk') == 2"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              }
+            ]
+          },
+          "web":{
+            "animations": [
+              "web"
+            ],
+            "transitions": [
+              {
+                "default": "q.property('dummy:atk') != 2"
+              },
+              {
+                "death" : "q.property('dummy:dead')"
+              },
+              {
+                "attack" : "q.property('dummy:atk') == 1"
+              }
+            ]
+          },
+          "death":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "death"
+            ]
+            
+            
+          }
+      }
+    },
+    "controller.animation.abyssal_anarchnid.walk":{
+      "initial_state": "standing",
+      "states":{
+        "standing":{
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "walk": "q.modified_move_speed > 0.1"
             }
+          ]
+        },
+        "walk":{
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "standing":  "q.modified_move_speed < 0.1"
+            }
+          ]
         }
+      }
     }
-  }
+}
 }

@@ -1,0 +1,71 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "electrizard_hitground_2",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particles/mob/electrizard/electrizard_hitground_2"
+			}
+		},
+		"curves": {
+			"variable.size1": {
+				"type": "bezier_chain",
+				"input": "v.particle_age",
+				"nodes": {
+					"0.0": {
+						"value": 0,
+						"slope": 0
+					},
+					"0.17": {
+						"value": 10,
+						"slope": 0
+					},
+					"2.0": {
+						"value": 10,
+						"slope": 0
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:emitter_local_space": {
+				"position": true,
+				"rotation": true,
+				"velocity": true
+			},
+			"minecraft:emitter_rate_instant": {
+				"num_particles": 1
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 3
+			},
+			"minecraft:emitter_shape_point": {
+				"offset": [0, 0.1, 0]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": 2
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["variable.size1", "variable.size1"],
+				"facing_camera_mode": "direction_y",
+				"uv": {
+					"texture_width": 16,
+					"texture_height": 16,
+					"uv": [0, 0],
+					"uv_size": [16, 16]
+				}
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "v.particle_age ",
+					"gradient": {
+						"0.0": "#FFFFFFFF",
+						"1.72": "#FFFFFFFF",
+						"2.0": "#00000000"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "dummy:devilmon_spit",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particles/mob/devilmon/devilmon_spit"
+			}
+		},
+		"curves": {
+			"variable.size": {
+				"type": "bezier",
+				"input": "v.particle_age",
+				"horizontal_range": "v.particle_lifetime",
+				"nodes": [1.63, 1, 0.69, 0]
+			}
+		},
+		"components": {
+			"minecraft:emitter_rate_instant": {
+				"num_particles": 30
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 3
+			},
+			"minecraft:emitter_shape_point": {
+				"offset": [0, 0.1, 0],
+				"direction": ["math.random(-6, 6)", "math.random(6, 12)", -12]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "math.random(2, 3)"
+			},
+			"minecraft:particle_initial_spin": {
+				"rotation_rate": "math.random(-180, 360)"
+			},
+			"minecraft:particle_initial_speed": "math.random(5, 18)",
+			"minecraft:particle_motion_dynamic": {
+				"linear_acceleration": [0, "math.Random(-1, -12)", 0],
+				"linear_drag_coefficient": 3
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["(0.2*v.particle_random_2+0.02) / (v.particle_age+1)*variable.size", "(0.2*v.particle_random_2+0.02) / (v.particle_age+1)*variable.size"],
+				"facing_camera_mode": "rotate_xyz",
+				"uv": {
+					"texture_width": 32,
+					"texture_height": 32,
+					"uv": [14, 14],
+					"uv_size": [4, 4]
+				}
+			},
+			"minecraft:particle_motion_collision": {
+				"collision_drag": 1,
+				"coefficient_of_restitution": 1,
+				"collision_radius": 0.1
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "v.particle_age / v.particle_lifetime",
+					"gradient": {
+						"0.0": "#FFE70011",
+						"1.0": "#FFCE0312"
+					}
+				}
+			}
+		}
+	}
+}

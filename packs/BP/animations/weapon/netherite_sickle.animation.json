@@ -1,5 +1,5 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.20.50",
     "animations": {
         "animation.netherite_sickle.tpp.attack_basic1":{
             "animation_length": 1,
@@ -41,6 +41,7 @@
             "timeline": {
                 "1": [ 
                      "v.sickle = 1;"
+                     
                 ]
             }
         },

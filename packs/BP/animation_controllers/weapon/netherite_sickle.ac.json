@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.0",
+  "format_version": "1.20.50",
   "animation_controllers": {
      "controller.animation.netherite_sickle":{
       "initial_state": "check",
@@ -36,7 +36,7 @@
                   "netherite_sickle.tpp.attack_basic1"
               ],
               "on_entry": [
-                 "@s dummy:atk.increment",
+                 "@s dummy:atk.state.1",
                  "/say attack_basic1",
                  "v.sickle = 0;"
                 ],
@@ -55,7 +55,7 @@
           },
           "attack_basic2":{
             "on_entry": [
-              "@s dummy:atk.increment",
+              "@s dummy:atk.state.2",
               "/say attack_basic2",
               "v.sickle = 0;"
              ],
@@ -77,7 +77,7 @@
           },
           "attack_basic3":{
             "on_entry": [
-              "@s dummy:atk.increment",
+              "@s dummy:atk.state.3",
               "/say attack_basic3",
               "v.sickle = 0;"
              ],
@@ -100,8 +100,8 @@
         "throw":{
           "on_entry": [
             "/say throw",
-            "@s dummy:atk.state.-1"
-            
+            "@s dummy:atk.state.-1",
+            "/scriptevent dummy:pull"
           ],
           "animations": [
             "netherite_sickle.tpp.throw"
@@ -164,7 +164,7 @@
             "/say double jump",
             "/scriptevent dummy:double_jump",
             "v.has_jumped = 0;",
-            "@s dummy:dummy:jump_state.1"
+            "@s dummy:jump_state.1"
           ],
           "animations": [
             "netherite_sickle.tpp.double_jump"

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.20.50",
     "minecraft:client_entity": {
       "description": {
         "identifier": "dummy:abyssal_anarchnid",
@@ -13,16 +13,28 @@
           "default": "geometry.abyssal_anarchnid"
         },
         "animations": {
-          "root": "controller.animation.abyssal_anarchnid",
+          "attack_controller": "controller.animation.abyssal_anarchnid.attack",
+          "walk_controller" : "controller.animation.abyssal_anarchnid.walk",
           "walk": "animation.abyssal_anarchnid.walk",
-          "idle": "animation.abyssal_anarchnid.idle"
+          "attack": "animation.abyssal_anarchnid.attack",
+          "idle": "animation.abyssal_anarchnid.idle",
+          "death" : "animation.abyssal_anarchnid.death",
+          "web" : "animation.abyssal_anarchnid.abyssal_web"
          
         },
         "scripts": {
           "animate": [
-            "root"
+            "attack_controller",
+            "walk_controller"
           
           ]
+        },
+        "particle_effects": {
+          "abyssal_anarchnid_abyssal_web_1" : "dummy:abyssal_anarchnid_abyssal_web_1",
+          "abyssal_anarchnid_abyssal_web_2" : "dummy:abyssal_anarchnid_abyssal_web_2",
+          "abyssal_anarchnid_attack_1" : "dummy:abyssal_anarchnid_attack_1",
+          "abyssal_anarchnid_attack_2" : "dummy:abyssal_anarchnid_attack_2"
+
         },
        
         "render_controllers": [

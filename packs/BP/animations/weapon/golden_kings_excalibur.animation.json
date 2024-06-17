@@ -1,12 +1,12 @@
 {
-    "format_version": "1.20.0",
+    "format_version": "1.20.50",
     "animations": {
         "animation.golden_kings_excalibur.tpp.attack_basic1":{
-            "animation_length": 1,
+            "animation_length": 0.42,
             "loop" :false,
             "timeline": {
-                "0.42": [ 
-                     "v.sickle = 1;"
+                "0.25": [ 
+                     "v.sword = 1;"
                 ]
                   
                 
@@ -17,11 +17,11 @@
             "animation_length": 1,
             "loop" :false,
             "timeline": {
-                "0.42": [ 
-                     "v.sickle = 1;"
+                "0.25": [ 
+                     "v.sword = 1;"
                 ],
                 "1.0": [
-                    "v.sickle = 2;"
+                    "v.sword = 2;"
                   ]
             }
             
@@ -30,10 +30,18 @@
             "animation_length": 1,
             "loop" :false,
             "timeline": {
-                "1": [ 
-                     "v.sickle = 1;"
+                "0.25": [ 
+                     "v.sword = 1;"
                 ]
             }
+        },
+        "animation.golden_kings_excalibur.tpp.knight_awakened":{
+            "animation_length": 3,
+            "loop" : false
+        },
+        "animation.golden_kings_excalibur.tpp.sneak":{
+            "animation_length": 1,
+            "loop" : false
         }
     
     }

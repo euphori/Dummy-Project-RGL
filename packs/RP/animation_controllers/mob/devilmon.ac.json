@@ -1,38 +1,68 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.20.50",
     "animation_controllers": {
-      "controller.animation.devilmon": {
+      "controller.animation.devilmon.attack": {
         "states": {
             "default": {
               "transitions":[
-                 {"idle": "q.is_on_ground"}
+                 {
+                  "spit": " q.property('dummy:atk') == 1"
+                },
+                {
+                  "death" : "q.property('dummy:dead')"
+                }
               ]
             },
-            "idle":{
-                "animations": [
-                    "idle"
-                ],
-                "transitions": [
-                    {
-                      "default": "q.all_animations_finished && q.is_on_ground"
-                       
-                    },
-                    {
-                      "walk" : "q.property(q.modified_move_speed > 0.14)  && q.is_on_ground"
-                    }
-                ]
-            },
-            "walk":{
+            "spit":{
               "animations": [
-                "walk"
+                "spit"
               ],
               "transitions": [
                 {
-                  "default": "q.all_animations_finished && q.is_on_ground"
+                  "default": "q.property('dummy:atk') == 0"
+                },
+                {
+                  "death" : "q.property('dummy:dead')"
                 }
+                
               ]
+            },
+            "death":{
+              "animations": [
+                "death"
+              ]
+              
             }
+        
+      }
+      
+    },
+    "controller.animation.devilmon.walk":{
+        "initial_state": "standing",
+        "states":{
+          "standing":{
+            "animations": [
+              "idle"
+            ],
+            "transitions": [
+              {
+                "jump": "q.modified_move_speed > 0.1"
+              }
+            ]
+          },
+          "jump":{
+            "blend_transition": 0.2,
+            "blend_via_shortest_path": true,
+            "animations": [
+              "jump"
+            ],
+            "transitions": [
+              {
+                "standing":  "q.modified_move_speed < 0.1"
+              }
+            ]
+          }
         }
-    }
+      }
   }
 }

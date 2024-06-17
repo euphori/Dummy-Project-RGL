@@ -13,16 +13,31 @@
           "default": "geometry.electrizard"
         },
         "animations": {
-          "root": "controller.animation.electrizard",
+          "walk_controller": "controller.animation.electrizard.walk",
+          "attack_controller" : "controller.animation.electrizard.attack",
           "walk": "animation.electrizard.walk",
-          "idle": "animation.electrizard.idle"
+          "idle": "animation.electrizard.idle",
+          "idle2":"animation.electrizard.idle2",
+          "run": "animation.electrizard.run",
+          "thunderwave": "animation.electrizard.thunderwave",
+          "hitground": "animation.electrizard.hitground",
+          "stungrowl": "animation.electrizard.stungrowl",
+          "attack": "animation.electrizard.attack",
+          "death" : "animation.electrizard.death"
          
         },
         "scripts": {
           "animate": [
-            "root"
+            "walk_controller",
+            "attack_controller"
           
           ]
+        },
+        "particle_effects": {
+          "electrizard_hitground_1": "electrizard_hitground_1",
+          "electrizard_hitground_2": "electrizard_hitground_2",
+          "electrizard_hitground_3": "electrizard_hitground_3",
+          "electrizard_hitground_4": "electrizard_hitground_4"
         },
        
         "render_controllers": [

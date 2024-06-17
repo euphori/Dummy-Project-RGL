@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version":"1.20.50",
     "minecraft:client_entity": {
       "description": {
         "identifier": "dummy:devilmon",
@@ -13,16 +13,24 @@
           "default": "geometry.devilmon"
         },
         "animations": {
-          "root": "controller.animation.devilmon",
-          "walk": "animation.devilmon.jump",
-          "idle": "animation.devilmon.idle"
+          "attack_controller": "controller.animation.devilmon.attack",
+          "walk_controller" : "controller.animation.devilmon.walk",
+          "jump": "animation.devilmon.jump",
+          "idle": "animation.devilmon.idle",
+          "spit" : "animation.devilmon.spit",
+          "death" : "animation.devilmon.death"
          
         },
         "scripts": {
           "animate": [
-            "root"
+            "attack_controller",
+            "walk_controller"
           
           ]
+        },
+        "particle_effects": {
+          "devilmon_jump" : "dummy:devilmon_jump",
+          "devilmon_spit" : "dummy:devilmon_spit"
         },
        
         "render_controllers": [

@@ -1,5 +1,5 @@
 {
-	"format_version": "1.10.0",
+	"format_version": "1.20.50",
 	"animation_controllers": {
 		"controller.animation.netherite_sickle": {
 			"initial_state": "default",
@@ -93,7 +93,7 @@
 							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
 						},
 						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished)) && q.property('dummy:jump_state') == 0"
 						},
 						{
 							"double_jump" : "q.property('dummy:jump_state') == 1"
@@ -114,7 +114,7 @@
 						"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
 					},
 					{
-						"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
+						"default": "q.property('dummy:atk_state') != 0 && v.jump_done"
 					}
 				  ]
 				},

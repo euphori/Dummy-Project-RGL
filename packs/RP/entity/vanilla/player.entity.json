@@ -1,5 +1,5 @@
 {
-	"format_version": "1.10.0",
+	"format_version":"1.20.50",
 	"minecraft:client_entity": {
 		"description": {
 			"identifier": "minecraft:player",
@@ -122,6 +122,7 @@
 				"golden_kings_excalibur.tpp.attack_basic2": "animation.golden_kings_excalibur.tpp.attack_basic2",
 				"golden_kings_excalibur.tpp.attack_basic3": "animation.golden_kings_excalibur.tpp.attack_basic3",
 				"golden_kings_excalibur.tpp.sneak" : "animation.golden_kings_excalibur.sneak",
+				"golden_kings_excalibur.tpp.knight_awakened" : "animation.golden_kings_excalibur.tpp.knight_awakened",
 
 				"controller.netherite_sickle": "controller.animation.netherite_sickle",
 				"netherite_sickle.tpp.run": "animation.netherite_sickle.tpp.run",
@@ -138,7 +139,14 @@
 			"particle_effects": {
 				"netherite_sickle_throw_1": "dummy:netherite_sickle_throw_1",
 				"netherite_sickle_throw_2": "dummy:netherite_sickle_throw_2",
-				"golden_kings_excalibur_sneak" : "dummy:golden_kings_excalibur_sneak"
+				"golden_kings_excalibur_sneak" : "dummy:golden_kings_excalibur_sneak",
+				"golden_kings_excalibur_awakened_1" : "dummy:golden_kings_excalibur_awakened_1",
+				"golden_kings_excalibur_awakened_2" : "dummy:golden_kings_excalibur_awakened_2",
+				"golden_kings_excalibur_awakened_3" : "dummy:golden_kings_excalibur_awakened_3",
+				"golden_kings_excalibur_awakened_4" : "dummy:golden_kings_excalibur_awakened_4",
+				"golden_kings_excalibur_awakened_5" : "dummy:golden_kings_excalibur_awakened_5",
+				"golden_kings_excalibur_awakened_6" : "dummy:golden_kings_excalibur_awakened_6",
+				"golden_kings_excalibur_awakened_7" : "dummy:golden_kings_excalibur_awakened_7"
 			},
 			"render_controllers": [
 				{

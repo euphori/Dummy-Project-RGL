@@ -1,11 +1,11 @@
 {
-	"format_version": "1.10.0",
+	"format_version":"1.20.50",
 	"particle_effect": {
 		"description": {
-			"identifier": "dummy:golden_kings_excalibur_sneak",
+			"identifier": "dummy:golden_kings_excalibur_awakened_7",
 			"basic_render_parameters": {
 				"material": "particles_add",
-				"texture": "textures/particles/weapon/excalibur_sneak"
+				"texture": "textures/particles/weapon/golden_kings_excalibur_awakened_7"
 			}
 		},
 		"curves": {
@@ -13,35 +13,30 @@
 				"type": "bezier",
 				"input": "v.particle_age",
 				"horizontal_range": "v.particle_lifetime",
-				"nodes": [0.3, 1, 0, 0]
+				"nodes": [0.68, 1, 0, 0]
 			}
 		},
 		"components": {
-			"minecraft:emitter_rate_steady": {
-				"spawn_rate": 40,
-				"max_particles": 40
+			"minecraft:emitter_rate_instant": {
+				"num_particles": 100
 			},
 			"minecraft:emitter_lifetime_once": {
 				"active_time": 1
 			},
-			"minecraft:emitter_shape_box": {
-				"half_dimensions": [0, 1, 0],
+			"minecraft:emitter_shape_point": {
+				"offset": [0, 0.1, 0],
 				"direction": ["math.random(-5, 5)", "math.random(0, 1)", "math.random(-5, 5)"]
 			},
 			"minecraft:particle_lifetime_expression": {
-				"max_lifetime": "math.random(0.5, 1)"
+				"max_lifetime": "math.random(0.3, 0.6)"
 			},
-			"minecraft:particle_initial_spin": {
-				"rotation": "math.random(360, -360)",
-				"rotation_rate": "math.random(360, -360)"
-			},
-			"minecraft:particle_initial_speed": "math.random(1, 5)",
+			"minecraft:particle_initial_speed": "math.random(30, 40)",
 			"minecraft:particle_motion_dynamic": {
 				"linear_acceleration": [0, 1, 0],
-				"linear_drag_coefficient": 5
+				"linear_drag_coefficient": 6
 			},
 			"minecraft:particle_appearance_billboard": {
-				"size": ["(0.15*v.particle_random_2+0.02) / (v.particle_age+0.04)*variable.size1", "(0.15*v.particle_random_2+0.02) / (v.particle_age+0.04)*variable.size1"],
+				"size": ["(1*v.particle_random_2+0.02) / (v.particle_age+0.1)*variable.size1", "(1*v.particle_random_2+0.02) / (v.particle_age+0.1)*variable.size1"],
 				"facing_camera_mode": "rotate_xyz",
 				"uv": {
 					"texture_width": 32,
@@ -54,10 +49,9 @@
 				"color": {
 					"interpolant": "v.particle_age*variable.particle_random_3",
 					"gradient": {
-						"0.0": "#FFFFFDC0",
-						"0.13": "#FFFF8D00",
-						"0.27": "#FFFF6D00",
-						"1.0": "#00FF0000"
+						"0.0": "#FFFFE8AD",
+						"0.56": "#FFFF9A00",
+						"0.99": "#00FF0000"
 					}
 				}
 			}
