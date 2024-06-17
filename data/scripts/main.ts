@@ -19,7 +19,7 @@ function applyEffects(entity: mc.Entity, effect_name : string, duration,amplifie
     amplifier: amplifier
 };
   
-  entity.addEffect(effect,duration, effectOptions)
+  entity.addEffect(effect,duration * 20, effectOptions)
 
 }
 
@@ -57,7 +57,15 @@ mc.world.afterEvents.entityHitEntity.subscribe((event) => {
   if (entity && attacker && !(attacker instanceof mc.Player)){
       const item = entity.getComponent("minecraft:equippable") as mc.EntityEquippableComponent;
       const weapon = item.getEquipment(mc.EquipmentSlot.Mainhand)
-     
+      console.warn(`${attacker.typeId}`)
+      switch (attacker.typeId) {
+        case "dummy:abyssal_anarchnid":
+          applyEffects(entity, `wither`, 5, 1); 
+          break;
+      
+        default:
+          break;
+      }
       if (weapon) {
           switch (weapon.typeId) {
               case "dummy:netherite_sickle":

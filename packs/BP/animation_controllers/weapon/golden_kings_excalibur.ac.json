@@ -145,7 +145,7 @@
           },
           "sneak":{
             "on_entry": [
-              "/scoreboard objectives add timer",
+              
               "/scriptevent dummy:apply_effect {\"effect\" :\"strength\",\"duration\" :8,\"amplifier\" :4}",
               "/scriptevent dummy:apply_effect {\"effect\" :\"health_boost\",\"duration\" :8,\"amplifier\" :9}"
             ],

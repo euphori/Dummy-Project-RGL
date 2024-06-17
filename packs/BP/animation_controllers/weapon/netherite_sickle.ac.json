@@ -45,7 +45,7 @@
                       "attack_basic2": "v.attack_time && v.sickle && q.all_animations_finished"
                     },
                     {
-                      "default": "q.all_animations_finished"
+                      "default": "v.sickle == 2"
                     },
                     
                     {
@@ -90,8 +90,7 @@
                   },
                   {
                     "default": "q.all_animations_finished"
-                  },
-                 
+                  },          
                   {
                     "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
                   }
