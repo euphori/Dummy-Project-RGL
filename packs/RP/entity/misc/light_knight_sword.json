@@ -1,0 +1,23 @@
+{
+  "format_version": "1.19.70",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dummy:light_knight_sword",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/weapon/golden_kings_excalibur"
+      },
+      "geometry": {
+        "default": "geometry.light_knight_sword"
+      },
+
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#c08b19",
+        "overlay_color": "#f0dbd6"
+      }
+    }
+  }
+}

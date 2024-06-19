@@ -1,0 +1,19 @@
+{
+  "format_version": "1.19.70",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dummy:electrizard_ground_strike",
+      "materials": {
+        "default": "entity"
+      },
+      "textures": {
+        "default": "textures/items/blaze_rod"
+      },
+      "geometry": {
+        "default": "geometry.fireball"
+      },
+
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

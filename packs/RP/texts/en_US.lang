@@ -12,3 +12,14 @@ item.spawn_egg.entity.dummy:abyssal_anarchnid.name=Spawn Abyssal Anarchnid
 
 entity.dummy:abyssal_anarchnid_web.name=Abyssal Anarchnid
 item.spawn_egg.entity.dummy:abyssal_anarchnid_web.name=Abyssal Anarchnid
+
+entity.dummy:light_knight_sword.name=Light Knight Sword
+item.spawn_egg.entity.dummy:light_knight_sword.name=Light Knight Sword
+
+
+entity.dummy:electrizard_thunderwave.name=Electrizard
+item.spawn_egg.entity.dummy:electrizard_thunderwave.name=Spawn Electrizard
+
+
+entity.dummy:electrizard_ground_strike.name=Electrizard
+item.spawn_egg.entity.dummy:electrizard_ground_strike.name=Spawn Electrizard

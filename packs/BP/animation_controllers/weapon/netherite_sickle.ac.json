@@ -1,110 +1,110 @@
 {
   "format_version": "1.20.50",
   "animation_controllers": {
-     "controller.animation.netherite_sickle":{
+    "controller.animation.netherite_sickle": {
       "initial_state": "check",
       "states": {
-          "check":{
-                "transitions": [
-                  {
-                    "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
-                  }
-                ]
-          },
-          "default":{ 
-            "on_entry": [       
-              "@s dummy:atk.reset",
-              "@s dummy:dummy:jump_state.0"
-            ],
-                "transitions": [
-                  {
-                    "attack_basic1": "v.attack_time"
-                  },
-                  {
-                    "throw" : "q.is_using_item"
-                  },
-                  {
-                    "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
-                  },
-                  {
-                    "jump" : "q.is_jumping && !q.is_riding"
-                  }
-              ]
-          },
-          "attack_basic1":{
-              "animations": [
-                  "netherite_sickle.tpp.attack_basic1"
-              ],
-              "on_entry": [
-                 "@s dummy:atk.state.1",
-                 "/say attack_basic1",
-                 "v.sickle = 0;"
-                ],
-              "transitions": [
-                  {
-                      "attack_basic2": "v.attack_time && v.sickle && q.all_animations_finished"
-                    },
-                    {
-                      "default": "v.sickle == 2"
-                    },
-                    
-                    {
-                      "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
-                    }
-              ]
-          },
-          "attack_basic2":{
-            "on_entry": [
-              "@s dummy:atk.state.2",
-              "/say attack_basic2",
-              "v.sickle = 0;"
-             ],
-              "animations": [
-                  "netherite_sickle.tpp.attack_basic2"
-              ],
-              "transitions": [
-                   {
-                      "attack_basic3": "v.attack_time && v.sickle && q.all_animations_finished"
-                    },
-                    {
-                      "default": "v.sickle == 2"
-                    },
-                    
-                    {
-                      "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
-                    }
-              ]
-          },
-          "attack_basic3":{
-            "on_entry": [
-              "@s dummy:atk.state.3",
-              "/say attack_basic3",
-              "v.sickle = 0;"
-             ],
-            "animations": [
-                "netherite_sickle.tpp.attack_basic3"
-            ],
-            "transitions": [
-                  {
-                    "attack_basic1" : "v.attack_time && q.all_animations_finished"
-                  },
-                  {
-                    "default": "q.all_animations_finished"
-                  },          
-                  {
-                    "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
-                  }
-            ]
+        "check": {
+          "transitions": [
+            {
+              "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
+            }
+          ]
         },
-        "throw":{
+        "default": {
+          "on_entry": ["@s dummy:atk.reset", "/say default"],
+          "transitions": [
+            {
+              "attack_basic1": "v.attack_time"
+            },
+            {
+              "use_check": "q.is_using_item"
+            },
+            {
+              "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
+            }
+          ]
+        },
+        "attack_basic1": {
+          "animations": ["netherite_sickle.tpp.attack_basic1"],
           "on_entry": [
-            "/say throw",
-            "@s dummy:atk.state.-1",
-            "/scriptevent dummy:pull"
+            "@s dummy:atk.state.1",
+            "/say attack_basic1",
+            "v.sickle = 0;"
           ],
-          "animations": [
-            "netherite_sickle.tpp.throw"
+          "transitions": [
+            {
+              "attack_basic2": "v.attack_time && v.sickle"
+            },
+            {
+              "default": "v.sickle == 2"
+            },
+            {
+              "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
+            },
+            {
+              "use_check": "q.is_using_item"
+            }
+          ]
+        },
+        "attack_basic2": {
+          "on_entry": [
+            "@s dummy:atk.state.2",
+            "/say attack_basic2",
+            "v.sickle = 0;"
           ],
+          "animations": ["netherite_sickle.tpp.attack_basic2"],
+          "transitions": [
+            {
+              "attack_basic3": "v.attack_time && v.sickle "
+            },
+            {
+              "default": "v.sickle == 2"
+            },
+            {
+              "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
+            },
+            {
+              "use_check": "q.is_using_item"
+            }
+          ]
+        },
+        "attack_basic3": {
+          "on_entry": [
+            "@s dummy:atk.state.3",
+            "/say attack_basic3",
+            "v.sickle = 0;"
+          ],
+          "animations": ["netherite_sickle.tpp.attack_basic3"],
+          "transitions": [
+            {
+              "attack_basic1": "v.attack_time && v.sickle"
+            },
+            {
+              "default": "q.all_animations_finished"
+            },
+            {
+              "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
+            },
+            {
+              "use_check": "q.is_using_item"
+            }
+          ]
+        },
+        "use_check": {
+          "on_entry": ["/scriptevent dummy:sickle_check_cooldown"],
+          "transitions": [
+            {
+              "throw": "!q.is_using_item && !q.property('dummy:sickle_on_cooldown')"
+            },
+            {
+              "default": "q.property('dummy:sickle_on_cooldown')"
+            }
+          ]
+        },
+        "throw": {
+          "on_entry": ["/say throw", "@s dummy:atk.state.-1", "v.sickle = 0;"],
+          "animations": ["netherite_sickle.tpp.throw"],
           "transitions": [
             {
               "attack_basic1": "v.attack_time && q.all_animations_finished"
@@ -113,78 +113,81 @@
               "default": "q.all_animations_finished && !q.is_using_item"
             },
             {
-              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'kubo:netherite_sickle') && !q.is_crawling)"
+              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling)"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.netherite_sickle.movement": {
+      "initial_state": "check",
+      "states": {
+        "check": {
+          "transitions": [
+            {
+              "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling"
             }
           ]
         },
-        "jump":{
+        "default": {
+          "on_entry": ["@s dummy:jump_state.0"],
+          "transitions": [
+            {
+              "jump": "q.is_jumping"
+            }
+          ]
+        },
+        "jump": {
           "on_entry": [
             "/say jump",
-            "v.has_jumped = 1;"
+            "v.has_jumped = 1;",
+            "@s dummy:jump_state.1"
           ],
-          "animations": [
-            "netherite_sickle.tpp.jump"
-          ],
-          "transitions": [
-        
-            {
-              "attack_basic1": "v.attack_time && q.all_animations_finished"
-            },
-            {
-              "jump_check": "!q.is_jumping"
-            },
-            {
-              "default": "q.all_animations_finished && !q.is_using_item && q.is_on_ground"
-            },
-            {
-              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'kubo:netherite_sickle') && !q.is_crawling)"
-            },
-            {
-              "throw" : "q.is_using_item"
-            }
-            
-          ]
-        },
-        "jump_check":{
-          "on_entry": [
-            "/say jump check"
-          ],
+          "animations": ["netherite_sickle.tpp.jump"],
           "transitions": [
             {
-              "double_jump": "v.has_jumped && q.is_jumping"
+              "jump_check": "!q.is_jumping && !q.is_on_ground"
             },
             {
-              "default": "q.all_animations_finished && !q.is_using_item && q.is_on_ground"
+              "default": "q.is_on_ground"
+            },
+            {
+              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling)"
             }
           ]
         },
-        "double_jump":{
+        "double_jump": {
           "on_entry": [
             "/say double jump",
             "/scriptevent dummy:double_jump",
             "v.has_jumped = 0;",
-            "@s dummy:jump_state.1"
+            "@s dummy:jump_state.2"
           ],
-          "animations": [
-            "netherite_sickle.tpp.double_jump"
-          ],
+          "animations": ["netherite_sickle.tpp.double_jump"],
           "transitions": [
-            
-            {
-              "attack_basic1": "v.attack_time && q.all_animations_finished"
-            },
             {
               "default": "q.all_animations_finished && !q.is_using_item"
             },
             {
-              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'kubo:netherite_sickle') && !q.is_crawling)"
+              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling)"
             }
-            
+          ]
+        },
+        "jump_check": {
+          "on_entry": ["/say jump check"],
+          "transitions": [
+            {
+              "double_jump": "!q.is_on_ground && q.is_jumping"
+            },
+            {
+              "default": "q.is_on_ground"
+            },
+            {
+              "check": "!(q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle') && !q.is_crawling)"
+            }
           ]
         }
-
       }
-      }
-     
+    }
   }
 }

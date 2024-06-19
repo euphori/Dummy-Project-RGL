@@ -1,216 +1,285 @@
 {
-	"format_version": "1.20.50",
-	"animation_controllers": {
-		"controller.animation.netherite_sickle": {
-			"initial_state": "default",
-			"states": {
-				"initial": {
-					"transitions": [
-						{
-							"default": "q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						}
-					]
-				},
-				"check": {
-					"transitions": [
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
-						},
-						{
-							"default": "!v.is_paperdoll && !q.is_emoting "
-						}
-					]
-				},
-				"default": {
-					"animations": [
-						{
-							"netherite_sickle.tpp.idle": "!v.is_first_person"
-						}
-					],
-					"transitions": [
-						{
-							"attack_basic1": "v.attack_time"
-						},
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.is_emoting&&!q.is_crawling)"
-						},
-						{
-							"run": "q.modified_move_speed>0.14"
-						},
-						{
-							"jump": "q.is_jumping && !q.is_riding"
-						},
-						{
-							"throw" : "q.property('dummy:atk_state') == -1"
-						}
-					]
-					
-				},
-				"run": {
-					"blend_transition": 0.3,
-					"blend_via_shortest_path": true,
-					"animations": [
-						"netherite_sickle.tpp.run"
-					],
-					"transitions": [
-						{
-							"attack_basic1": "v.attack_time"
-						},
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
-						},
-						{
-							"default": "!(q.modified_move_speed > 0.14)"
-						},
-						{
-							"jump": "q.is_jumping && !q.is_riding"
-						},
-						{
-							"throw" : "q.property('dummy:atk_state') == -1"
-						}
-					]
-				},
-				"jump":{
-					"blend_transition": 0.3,
-         			 "blend_via_shortest_path": true,
-					"animations": [
-						"netherite_sickle.tpp.jump"
-					],
-					"transitions": [
-						{
-							"attack_basic1": "q.property('dummy:atk_state') == 1"
-						},
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-						},
-						{
-							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-						},
-						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished)) && q.property('dummy:jump_state') == 0"
-						},
-						{
-							"double_jump" : "q.property('dummy:jump_state') == 1"
-						}
-					]
-				},
-				"double_jump":{
-				"blend_transition": 0.3,
-				"blend_via_shortest_path": true,
-				  "animations": [
-					  "netherite_sickle.tpp.double_jump"
-				  ],
-				  "transitions": [
-					{
-						"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-					},
-					{
-						"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-					},
-					{
-						"default": "q.property('dummy:atk_state') != 0 && v.jump_done"
-					}
-				  ]
-				},
-				"attack_basic1":{
-					"blend_transition": 0.3,
-          			"blend_via_shortest_path": true,
-					"animations": [
-						"netherite_sickle.tpp.attack_basic1"
-					],
-					"transitions": [
-						{
-							"attack_basic2" : "q.property('dummy:atk_state') == 2"
-						},
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-						},
-						{
-							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-						},
-						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
-						}
-					]
-				},
-				"attack_basic2":{
-					"blend_transition": 0.3,
-         			"blend_via_shortest_path": true,
-					"animations": [
-						"netherite_sickle.tpp.attack_basic2"
-					],
-					"transitions": [
-						{
-							"attack_basic3" : "q.property('dummy:atk_state') == 3"
-						},
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-						},
-						{
-							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-						},
-						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
-						}
-					]
-				},
-				"attack_basic3":{
-					"blend_transition": 0.3,
-         			 "blend_via_shortest_path": true,
-					"animations": [
-						"netherite_sickle.tpp.attack_basic3"
-					],
-					"transitions": [
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-						},
-						{
-							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-						},
-						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
-						}
-					]
-				},
-				"throw":{
-					"animations": [
-						"netherite_sickle.tpp.throw"
-					],
-					"transitions": [
-					
-						{
-							"initial": "!q.is_item_name_any('slot.weapon.mainhand','dummy:netherite_sickle')"
-						},
-						{
-							"check": "(q.any_animation_finished || v.jump_done) && (q.is_emoting && !q.is_crawling)"
-						},
-						{
-							"run": "(q.any_animation_finished || v.jump_done) && q.modified_move_speed>0.14 && !q.is_sneaking && !q.is_sprinting"
-						},
-						{
-							"default": "q.property('dummy:atk_state') != 0 || (!(q.modified_move_speed > 0.14) && (v.jump_done || q.any_animation_finished))"
-						}
-					
-					]
-				}
-				
-				
-			}
-		}
-	}
+  "format_version": "1.20.50",
+  "animation_controllers": {
+    "controller.animation.netherite_sickle.attack": {
+      "initial_state": "default",
+      "states": {
+        "initial": {
+          "transitions": [
+            {
+              "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            }
+          ]
+        },
+        "default": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+
+          "transitions": [
+            {
+              "attack_basic1": "q.property('dummy:atk_state') == 1"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            }
+          ]
+        },
+        "throw": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.throw"],
+          "transitions": [
+            {
+              "attack_basic1": "v.attack_time"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "(q.is_emoting && !q.is_crawling)"
+            },
+
+            {
+              "default": "q.property('dummy:atk_state') == 0"
+            }
+          ]
+        },
+
+        "check": {
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "default": "!v.is_paperdoll && !q.is_emoting"
+            }
+          ]
+        },
+
+        "attack_basic1": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.attack_basic1"],
+          "transitions": [
+            {
+              "attack_basic2": "q.property('dummy:atk_state') == 2"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "default": "q.property('dummy:atk_state') == 0"
+            }
+          ]
+        },
+        "attack_basic2": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.attack_basic2"],
+          "transitions": [
+            {
+              "attack_basic3": "q.property('dummy:atk_state') == 3"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "default": "q.property('dummy:atk_state') == 0"
+            }
+          ]
+        },
+        "attack_basic3": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.attack_basic3"],
+          "transitions": [
+            {
+              "attack_basic1": "q.property('dummy:atk_state') == 1"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "default": "q.property('dummy:atk_state') == 0"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.netherite_sickle.movement": {
+      "initial_state": "default",
+      "states": {
+        "initial": {
+          "transitions": [
+            {
+              "default": "q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            }
+          ]
+        },
+        "default": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14 && !q.is_sneaking"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.14)"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            }
+          ]
+        },
+        "check": {
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "default": "!v.is_paperdoll && !q.is_emoting"
+            }
+          ]
+        },
+        "idle": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.idle"],
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14 && !q.is_sneaking"
+            },
+            {
+              "idle2": "q.all_animations_finished && math.random(0.0, 2.0) > 1.9"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            }
+          ]
+        },
+        "idle2": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.sharpen_sickle"],
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "run": "q.modified_move_speed > 0.14 && !q.is_sneaking"
+            },
+            {
+              "idle": "q.all_animations_finished"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            }
+          ]
+        },
+        "run": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.run"],
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "idle": "!(q.modified_move_speed > 0.14)"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            }
+          ]
+        },
+        "jump": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.jump"],
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            },
+            {
+              "default": "q.property('dummy:jump_state') == 0"
+            }
+          ]
+        },
+
+        "double_jump": {
+          "blend_transition": 0.3,
+          "blend_via_shortest_path": true,
+          "animations": ["netherite_sickle.tpp.double_jump"],
+          "transitions": [
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "default": "q.property('dummy:jump_state') == 0"
+            }
+          ]
+        }
+      }
+    }
+  }
 }

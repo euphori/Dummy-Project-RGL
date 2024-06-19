@@ -1,70 +1,49 @@
 {
-    "format_version": "1.20.50",
-    "animations": {
-        "animation.netherite_sickle.tpp.attack_basic1":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "0.42": [ 
-                     "v.sickle = 1;"
-                ],
-                "1.0": [
-                    "v.sickle = 2;"
-                  ]
-                  
-                
-            }
-            
-        },
-         "animation.netherite_sickle.tpp.attack_basic2":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "0.42": [ 
-                     "v.sickle = 1;"
-                ],
-                "1.0": [
-                    "v.sickle = 2;"
-                  ]
-            }
-            
-        },
-        "animation.netherite_sickle.tpp.attack_basic3":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "1": [ 
-                     "v.sickle = 1;"
-                ]
-            }
-        },
-        "animation.netherite_sickle.tpp.throw":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "1": [ 
-                     "v.sickle = 1;"
-                     
-                ]
-            }
-        },
-        "animation.netherite_sickle.tpp.jump":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "1": [ 
-                 "v.jump_done = 1;"
-                ]
-            }
-        },
-        "animation.netherite_sickle.tpp.double_jump":{
-            "animation_length": 1,
-            "loop" :false,
-            "timeline": {
-                "0.4": [ 
-                 
-                ]
-            }
-        }
+  "format_version": "1.20.50",
+  "animations": {
+    "animation.netherite_sickle.tpp.attack_basic1": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "0.42": ["v.sickle = 1;"],
+        "1.0": ["v.sickle = 2;"]
+      }
+    },
+    "animation.netherite_sickle.tpp.attack_basic2": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "0.42": ["v.sickle = 1;"],
+        "1.0": ["v.sickle = 2;"]
+      }
+    },
+    "animation.netherite_sickle.tpp.attack_basic3": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "1": ["v.sickle = 1;"]
+      }
+    },
+    "animation.netherite_sickle.tpp.throw": {
+      "animation_length": 2,
+      "loop": false,
+      "timeline": {
+        "2": ["v.sickle = 1;"]
+      }
+    },
+    "animation.netherite_sickle.tpp.jump": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "1": ["v.jump_done = 1;"]
+      }
+    },
+    "animation.netherite_sickle.tpp.double_jump": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "0.4": []
+      }
     }
+  }
 }

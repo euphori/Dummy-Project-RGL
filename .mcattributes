@@ -5,3 +5,4 @@ diagnostic.disable.resourcepack.animation.time.exceeds=true
 diagnostic.disable.521=true
 diagnostic.disable.521=true
 diagnostic.disable.=true
+diagnostic.disable.=true

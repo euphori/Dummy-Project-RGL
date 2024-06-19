@@ -1,53 +1,56 @@
 {
-    "format_version": "1.10.0",
-    "minecraft:client_entity": {
-      "description": {
-        "identifier": "dummy:electrizard",
-        "materials": {
-          "default": "entity_alphatest"
-        },
-        "textures": {
-          "default": "textures/entity/electrizard"
-        },
-        "geometry": {
-          "default": "geometry.electrizard"
-        },
-        "animations": {
-          "walk_controller": "controller.animation.electrizard.walk",
-          "attack_controller" : "controller.animation.electrizard.attack",
-          "walk": "animation.electrizard.walk",
-          "idle": "animation.electrizard.idle",
-          "idle2":"animation.electrizard.idle2",
-          "run": "animation.electrizard.run",
-          "thunderwave": "animation.electrizard.thunderwave",
-          "hitground": "animation.electrizard.hitground",
-          "stungrowl": "animation.electrizard.stungrowl",
-          "attack": "animation.electrizard.attack",
-          "death" : "animation.electrizard.death"
-         
-        },
-        "scripts": {
-          "animate": [
-            "walk_controller",
-            "attack_controller"
-          
-          ]
-        },
-        "particle_effects": {
-          "electrizard_hitground_1": "electrizard_hitground_1",
-          "electrizard_hitground_2": "electrizard_hitground_2",
-          "electrizard_hitground_3": "electrizard_hitground_3",
-          "electrizard_hitground_4": "electrizard_hitground_4"
-        },
-       
-        "render_controllers": [
-          "controller.render.default"
-        ],
-        "spawn_egg": {
-          "base_color": "#511828",
-          "overlay_color": "#ef8266"
-        }
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dummy:electrizard",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/electrizard"
+      },
+      "geometry": {
+        "default": "geometry.electrizard"
+      },
+      "animations": {
+        "walk_controller": "controller.animation.electrizard.walk",
+        "attack_controller": "controller.animation.electrizard.attack",
+        "walk": "animation.electrizard.walk",
+        "idle": "animation.electrizard.idle",
+        "idle2": "animation.electrizard.idle2",
+        "run": "animation.electrizard.run",
+        "thunderwave": "animation.electrizard.thunderwave",
+        "hitground": "animation.electrizard.hitground",
+        "stungrowl": "animation.electrizard.stungrowl",
+        "attack": "animation.electrizard.attack",
+        "death": "animation.electrizard.death"
+      },
+      "scripts": {
+        "animate": ["walk_controller", "attack_controller"]
+      },
+      "particle_effects": {
+        "electrizard_hitground_1": "electrizard_hitground_1",
+        "electrizard_hitground_2": "electrizard_hitground_2",
+        "electrizard_hitground_3": "electrizard_hitground_3",
+        "electrizard_hitground_4": "electrizard_hitground_4",
+        "electrizard_hitground_5": "electrizard_hitground_5",
+        "electrizard_lightning_wave_1": "electrizard_lightning_wave_1",
+        "electrizard_lightning_wave_2": "electrizard_lightning_wave_2",
+        "electrizard_lightning_wave_3": "electrizard_lightning_wave_3",
+        "electrizard_lightning_wave_4": "electrizard_lightning_wave_4",
+        "electrizard_lightning_wave_5": "electrizard_lightning_wave_5",
+        "electrizard_lightning_wave_6": "electrizard_lightning_wave_6",
+        "electrizard_lightning_wave_7": "electrizard_lightning_wave_7",
+        "electrizard_lightning_wave_8": "electrizard_lightning_wave_8",
+        "electrizard_stungrowl_1": "electrizard_stungrowl_1",
+        "electrizard_stungrowl_2": "electrizard_stungrowl_2"
+      },
+
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#511828",
+        "overlay_color": "#ef8266"
       }
     }
   }
-  
+}

@@ -1,300 +1,293 @@
 {
-	"format_version": "1.18.10",
-	"minecraft:entity": {
-		"description": {
-			"identifier": "minecraft:player",
-			"is_spawnable": false,
-			"is_summonable": false,
-			"is_experimental": false,
-			"animations": {
-				"controller.netherite_sickle":"controller.animation.netherite_sickle",
-				"controller.golden_kings_excalibur" : "controller.animation.golden_kings_excalibur",
-				"golden_kings_excalibur.tpp.attack_basic1" : "animation.golden_kings_excalibur.tpp.attack_basic1",
-				"golden_kings_excalibur.tpp.attack_basic2" : "animation.golden_kings_excalibur.tpp.attack_basic2",
-				"golden_kings_excalibur.tpp.attack_basic3" : "animation.golden_kings_excalibur.tpp.attack_basic3",
-				"golden_kings_excalibur.tpp.knight_awakened" : "animation.golden_kings_excalibur.tpp.knight_awakened",
-				"golden_kings_excalibur.tpp.sneak" : "animation.golden_kings_excalibur.tpp.sneak",
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false,
+      "animations": {
+        "controller.netherite_sickle": "controller.animation.netherite_sickle",
+        "controller.netherite_sickle.movement": "controller.animation.netherite_sickle.movement",
+        "controller.golden_kings_excalibur": "controller.animation.golden_kings_excalibur",
+        "golden_kings_excalibur.tpp.attack_basic1": "animation.golden_kings_excalibur.tpp.attack_basic1",
+        "golden_kings_excalibur.tpp.attack_basic2": "animation.golden_kings_excalibur.tpp.attack_basic2",
+        "golden_kings_excalibur.tpp.attack_basic3": "animation.golden_kings_excalibur.tpp.attack_basic3",
+        "golden_kings_excalibur.tpp.knight_awakened": "animation.golden_kings_excalibur.tpp.knight_awakened",
+        "golden_kings_excalibur.tpp.sneak": "animation.golden_kings_excalibur.tpp.sneak",
 
-				"netherite_sickle.tpp.attack_basic1" : "animation.netherite_sickle.tpp.attack_basic1",
-				"netherite_sickle.tpp.attack_basic2" : "animation.netherite_sickle.tpp.attack_basic2",
-				"netherite_sickle.tpp.attack_basic3" : "animation.netherite_sickle.tpp.attack_basic3",
-				"netherite_sickle.tpp.throw" : "animation.netherite_sickle.tpp.throw",
-				"netherite_sickle.tpp.jump" : "animation.netherite_sickle.tpp.jump",
-				"netherite_sickle.tpp.double_jump" : "animation.netherite_sickle.tpp.double_jump"
-			},
-			"scripts": {
-				"animate": [
-					"controller.netherite_sickle",
-					"controller.golden_kings_excalibur"
-				]
-			},
-			"properties": {
-				"dummy:atk_state": {
-					"client_sync": true,
-					"type": "int",
-					"range": [
-						-1,
-						3
-					],
-					"default": 0
-				},
-				"dummy:is_weapon_attack": {
-					"client_sync": true,
-					"type": "bool",
-					"default": false
-				}
-			}
-				
-			
-		},
-		"components": {
-			"minecraft:experience_reward": {
-				"on_death": "math.min(query.player_level*7,100)"
-			},
-			"minecraft:type_family": {
-				"family": [
-					"player"
-				]
-			},
-			"minecraft:is_hidden_when_invisible": {},
-			"minecraft:loot": {
-				"table": "loot_tables/empty.json"
-			},
-			"minecraft:collision_box": {
-				"width": 0.6,
-				"height": 1.8
-			},
-			"minecraft:can_climb": {},
-			"minecraft:movement": {
-				"value": 0.1
-			},
-			"minecraft:hurt_on_condition": {
-				"damage_conditions": [
-					{
-						"filters": {
-							"test": "in_lava",
-							"subject": "self",
-							"operator": "==",
-							"value": true
-						},
-						"cause": "lava",
-						"damage_per_tick": 4
-					}
-				]
-			},
-			"minecraft:attack": {
-				"damage": 1
-			},
-			"minecraft:player.saturation": {
-				"value": 20
-			},
-			"minecraft:player.exhaustion": {
-				"value": 0,
-				"max": 4
-			},
-			"minecraft:player.level": {
-				"value": 0,
-				"max": 24791
-			},
-			"minecraft:player.experience": {
-				"value": 0,
-				"max": 1
-			},
-			"minecraft:breathable": {
-				"total_supply": 15,
-				"suffocate_time": -1,
-				"inhale_time": 3.75,
-				"generates_bubbles": false
-			},
-			"minecraft:nameable": {
-				"always_show": true,
-				"allow_name_tag_renaming": false
-			},
-			"minecraft:physics": {},
-			"minecraft:pushable": {
-				"is_pushable": false,
-				"is_pushable_by_piston": true
-			},
-			"minecraft:insomnia": {
-				"days_until_insomnia": 3
-			},
-			"minecraft:rideable": {
-				"seat_count": 2,
-				"family_types": [
-					"parrot_tame"
-				],
-				"pull_in_entities": true,
-				"seats": [
-					{
-						"position": [
-							0.4,
-							-0.2,
-							-0.1
-						],
-						"min_rider_count": 0,
-						"max_rider_count": 0,
-						"lock_rider_rotation": 0
-					},
-					{
-						"position": [
-							-0.4,
-							-0.2,
-							-0.1
-						],
-						"min_rider_count": 1,
-						"max_rider_count": 2,
-						"lock_rider_rotation": 0
-					}
-				]
-			},
-			"minecraft:conditional_bandwidth_optimization": {},
-			"minecraft:block_climber": {},
-			"minecraft:environment_sensor": {
-				"triggers": {
-					"filters": {
-						"all_of": [
-							{
-								"test": "has_mob_effect",
-								"subject": "self",
-								"value": "bad_omen"
-							},
-							{
-								"test": "is_in_village",
-								"subject": "self",
-								"value": true
-							}
-						]
-					},
-					"event": "minecraft:trigger_raid"
-				}
-			}
-		},
-		"component_groups": {
-			"minecraft:add_bad_omen": {
-				"minecraft:spell_effects": {
-					"add_effects": [
-						{
-							"effect": "bad_omen",
-							"duration": 6000,
-							"visible": false,
-							"display_on_screen_animation": true
-						}
-					]
-				},
-				"minecraft:timer": {
-					"time": [
-						0,
-						0
-					],
-					"looping": false,
-					"time_down_event": {
-						"event": "minecraft:clear_add_bad_omen",
-						"target": "self"
-					}
-				}
-			},
-			"minecraft:clear_bad_omen_spell_effect": {
-				"minecraft:spell_effects": {}
-			},
-			"minecraft:raid_trigger": {
-				"minecraft:raid_trigger": {
-					"triggered_event": {
-						"event": "minecraft:remove_raid_trigger",
-						"target": "self"
-					}
-				},
-				"minecraft:spell_effects": {
-					"remove_effects": "bad_omen"
-				}
-			}
-		},
-		"events": {
-			
-			
-			"dummy:atk.increment" :{
-				"set_property":{
-					"dummy:atk_state" : "q.property('dummy:atk_state') + 1"
-				}
-			},
-			"dummy:atk.reset" :{
-				"set_property":{
-					"dummy:atk_state" : 0
-				}
-			}, 
-			"dummy:atk.state.-2": {
-				"set_property": {
-				  "dummy:atk_state": -2
-				}
-			  },
-			"dummy:atk.state.-1": {
-				"set_property": {
-				  "dummy:atk_state": -1
-				}
-			  },
-			"dummy:atk.state.1": {
-			"set_property": {
-				"dummy:atk_state": 1
-			}
-			},
-			"dummy:atk.state.2": {
-				"set_property": {
-					"dummy:atk_state": 2
-				}
-			},
-			"dummy:atk.state.3": {
-				"set_property": {
-					"dummy:atk_state": 3
-				}
-			},
-	
+        "netherite_sickle.tpp.attack_basic1": "animation.netherite_sickle.tpp.attack_basic1",
+        "netherite_sickle.tpp.attack_basic2": "animation.netherite_sickle.tpp.attack_basic2",
+        "netherite_sickle.tpp.attack_basic3": "animation.netherite_sickle.tpp.attack_basic3",
+        "netherite_sickle.tpp.throw": "animation.netherite_sickle.tpp.throw",
+        "netherite_sickle.tpp.jump": "animation.netherite_sickle.tpp.jump",
+        "netherite_sickle.tpp.double_jump": "animation.netherite_sickle.tpp.double_jump"
+      },
+      "scripts": {
+        "animate": [
+          "controller.netherite_sickle",
+          "controller.golden_kings_excalibur",
+          "controller.netherite_sickle.movement"
+        ]
+      },
+      "properties": {
+        "dummy:atk_state": {
+          "client_sync": true,
+          "type": "int",
+          "range": [-1, 3],
+          "default": 0
+        },
+        "dummy:is_weapon_attack": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        },
+        "dummy:jump_state": {
+          "client_sync": true,
+          "type": "int",
+          "range": [-1, 3],
+          "default": 0
+        },
+        "dummy:charge_time": {
+          "client_sync": true,
+          "type": "int",
+          "range": [0, 10],
+          "default": 5
+        },
+        "dummy:excalibur_on_cooldown": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        },
+        "dummy:sickle_on_cooldown": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:experience_reward": {
+        "on_death": "math.min(query.player_level*7,100)"
+      },
+      "minecraft:type_family": {
+        "family": ["player"]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.8
+      },
+      "minecraft:can_climb": {},
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:player.saturation": {
+        "value": 20
+      },
+      "minecraft:player.exhaustion": {
+        "value": 0,
+        "max": 4
+      },
+      "minecraft:player.level": {
+        "value": 0,
+        "max": 24791
+      },
+      "minecraft:player.experience": {
+        "value": 0,
+        "max": 1
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+        "always_show": true,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:insomnia": {
+        "days_until_insomnia": 3
+      },
+      "minecraft:rideable": {
+        "seat_count": 2,
+        "family_types": ["parrot_tame"],
+        "pull_in_entities": true,
+        "seats": [
+          {
+            "position": [0.4, -0.2, -0.1],
+            "min_rider_count": 0,
+            "max_rider_count": 0,
+            "lock_rider_rotation": 0
+          },
+          {
+            "position": [-0.4, -0.2, -0.1],
+            "min_rider_count": 1,
+            "max_rider_count": 2,
+            "lock_rider_rotation": 0
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:block_climber": {},
+      "minecraft:environment_sensor": {
+        "triggers": {
+          "filters": {
+            "all_of": [
+              {
+                "test": "has_mob_effect",
+                "subject": "self",
+                "value": "bad_omen"
+              },
+              {
+                "test": "is_in_village",
+                "subject": "self",
+                "value": true
+              }
+            ]
+          },
+          "event": "minecraft:trigger_raid"
+        }
+      }
+    },
+    "component_groups": {
+      "minecraft:add_bad_omen": {
+        "minecraft:spell_effects": {
+          "add_effects": [
+            {
+              "effect": "bad_omen",
+              "duration": 6000,
+              "visible": false,
+              "display_on_screen_animation": true
+            }
+          ]
+        },
+        "minecraft:timer": {
+          "time": [0, 0],
+          "looping": false,
+          "time_down_event": {
+            "event": "minecraft:clear_add_bad_omen",
+            "target": "self"
+          }
+        }
+      },
+      "minecraft:clear_bad_omen_spell_effect": {
+        "minecraft:spell_effects": {}
+      },
+      "minecraft:raid_trigger": {
+        "minecraft:raid_trigger": {
+          "triggered_event": {
+            "event": "minecraft:remove_raid_trigger",
+            "target": "self"
+          }
+        },
+        "minecraft:spell_effects": {
+          "remove_effects": "bad_omen"
+        }
+      }
+    },
+    "events": {
+      "dummy:atk.increment": {
+        "set_property": {
+          "dummy:atk_state": "q.property('dummy:atk_state') + 1"
+        }
+      },
+      "dummy:atk.reset": {
+        "set_property": {
+          "dummy:atk_state": 0
+        }
+      },
+      "dummy:atk.state.-2": {
+        "set_property": {
+          "dummy:atk_state": -2
+        }
+      },
+      "dummy:atk.state.-1": {
+        "set_property": {
+          "dummy:atk_state": -1
+        }
+      },
+      "dummy:atk.state.1": {
+        "set_property": {
+          "dummy:atk_state": 1
+        }
+      },
+      "dummy:atk.state.2": {
+        "set_property": {
+          "dummy:atk_state": 2
+        }
+      },
+      "dummy:atk.state.3": {
+        "set_property": {
+          "dummy:atk_state": 3
+        }
+      },
+      "dummy:jump_state.2": {
+        "set_property": {
+          "dummy:jump_state": 2
+        }
+      },
+      "dummy:jump_state.1": {
+        "set_property": {
+          "dummy:jump_state": 1
+        }
+      },
 
+      "dummy:jump_state.0": {
+        "set_property": {
+          "dummy:jump_state": 0
+        }
+      },
 
-			"dummy:jump_state.1":{
-				"set_property": {
-					"dummy:jump_state": 1
-				}
-			},
-			
-			"dummy:jump_state.0":{
-				"set_property": {
-					"dummy:jump_state": 0
-				}
-			},
-			
-			
-			"minecraft:gain_bad_omen": {
-				"add": {
-					"component_groups": [
-						"minecraft:add_bad_omen"
-					]
-				}
-			},
-			"minecraft:clear_add_bad_omen": {
-				"remove": {
-					"component_groups": [
-						"minecraft:add_bad_omen"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"minecraft:clear_bad_omen_spell_effect"
-					]
-				}
-			},
-			"minecraft:trigger_raid": {
-				"add": {
-					"component_groups": [
-						"minecraft:raid_trigger"
-					]
-				}
-			},
-			"minecraft:remove_raid_trigger": {
-				"remove": {
-					"component_groups": [
-						"minecraft:raid_trigger"
-					]
-				}
-			}
-		}
-	}
+      "minecraft:gain_bad_omen": {
+        "add": {
+          "component_groups": ["minecraft:add_bad_omen"]
+        }
+      },
+      "minecraft:clear_add_bad_omen": {
+        "remove": {
+          "component_groups": ["minecraft:add_bad_omen"]
+        },
+        "add": {
+          "component_groups": ["minecraft:clear_bad_omen_spell_effect"]
+        }
+      },
+      "minecraft:trigger_raid": {
+        "add": {
+          "component_groups": ["minecraft:raid_trigger"]
+        }
+      },
+      "minecraft:remove_raid_trigger": {
+        "remove": {
+          "component_groups": ["minecraft:raid_trigger"]
+        }
+      }
+    }
+  }
 }
