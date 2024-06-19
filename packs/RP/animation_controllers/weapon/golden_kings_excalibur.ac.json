@@ -33,6 +33,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["golden_kings_excalibur.tpp.knight_awakened"],
+          "sound_effects": [{ "effect": "golden_kings_excalibur.awakened" }],
           "transitions": [
             {
               "attack_basic1": "v.attack_time && q.property('dummy:atk_state') == 0"
@@ -233,6 +234,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["golden_kings_excalibur.tpp.sneak"],
+          "sound_effects": [{ "effect": "golden_kings_excalibur.sneak" }],
           "transitions": [
             {
               "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur')"

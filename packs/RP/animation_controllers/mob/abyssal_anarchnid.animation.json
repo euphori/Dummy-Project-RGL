@@ -3,94 +3,86 @@
   "animation_controllers": {
     "controller.animation.abyssal_anarchnid.attack": {
       "states": {
-          "default": {
-            "blend_transition": 0.2,
-            "blend_via_shortest_path": true,
-            "transitions":[
-              {
-                "attack" : "q.property('dummy:atk') == 1"
-              },
-              {
-                "web" : "q.property('dummy:atk') == 2"
-              },
-              {
-                "death" : "q.property('dummy:dead')"
-              }
-              
-            ]
-          },
-          
-          "attack":{
-            "blend_transition": 0.2,
-            "blend_via_shortest_path": true,
-            "animations": [
-              "attack"
-            ],
-            "transitions": [
-              {
-                "default": "q.property('dummy:atk') != 1"
-              },
-              {
-                "web" : "q.property('dummy:atk') == 2"
-              },
-              {
-                "death" : "q.property('dummy:dead')"
-              }
-            ]
-          },
-          "web":{
-            "animations": [
-              "web"
-            ],
-            "transitions": [
-              {
-                "default": "q.property('dummy:atk') != 2"
-              },
-              {
-                "death" : "q.property('dummy:dead')"
-              },
-              {
-                "attack" : "q.property('dummy:atk') == 1"
-              }
-            ]
-          },
-          "death":{
-            "blend_transition": 0.2,
-            "blend_via_shortest_path": true,
-            "animations": [
-              "death"
-            ]
-            
-            
-          }
+        "default": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "transitions": [
+            {
+              "attack": "q.property('dummy:atk') == 1"
+            },
+            {
+              "web": "q.property('dummy:atk') == 2"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            }
+          ]
+        },
+
+        "attack": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": ["attack"],
+          "sound_effects": [{ "effect": "attack" }],
+          "transitions": [
+            {
+              "default": "q.property('dummy:atk') != 1"
+            },
+            {
+              "web": "q.property('dummy:atk') == 2"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            }
+          ]
+        },
+        "web": {
+          "animations": ["web"],
+          "sound_effects": [{ "effect": "web" }],
+          "transitions": [
+            {
+              "default": "q.property('dummy:atk') != 2"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            },
+            {
+              "attack": "q.property('dummy:atk') == 1"
+            }
+          ]
+        },
+        "death": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": ["death"],
+          "sound_effects": [{ "effect": "death" }]
+        }
       }
     },
-    "controller.animation.abyssal_anarchnid.walk":{
+    "controller.animation.abyssal_anarchnid.walk": {
       "initial_state": "standing",
-      "states":{
-        "standing":{
-          "animations": [
-            "idle"
-          ],
+      "states": {
+        "standing": {
+          "animations": ["idle"],
+          "sound_effects": [{ "effect": "idle" }],
           "transitions": [
             {
               "walk": "q.modified_move_speed > 0.1"
             }
           ]
         },
-        "walk":{
+        "walk": {
           "blend_transition": 0.2,
           "blend_via_shortest_path": true,
-          "animations": [
-            "walk"
-          ],
+          "animations": ["walk"],
+          "sound_effects": [{ "effect": "walk" }],
           "transitions": [
             {
-              "standing":  "q.modified_move_speed < 0.1"
+              "standing": "q.modified_move_speed < 0.1"
             }
           ]
         }
       }
     }
-}
+  }
 }

@@ -1,4 +1,214 @@
 {
-	"format_version": "1.14.0",
-	"sound_definitions": {}
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "netherite_sickle.attack_basic1": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/attack_basic1",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.attack_basic2": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/attack_basic2",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.attack_basic3": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/attack_basic3",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.double_jump": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/double_jump",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.jump": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/jump",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.run": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/run",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.sharpen_sickle": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/sharpen_sickle",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "netherite_sickle.throw": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/netherite_sickle/throw",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "golden_kings_excalibur.awakened": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/golden_kings_excalibur/golden_kings_excalibur_awakened",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "golden_kings_excalibur.sneak": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/weapon/golden_kings_excalibur/golden_kings_excalibur_sneak",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "abyssal_anarchnid.attack": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/abyssal_anarchnid/abyssal_anarchid_attack",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "abyssal_anarchnid.attack2": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/abyssal_anarchnid/abyssal_anarchid_attack2",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "abyssal_anarchnid.death": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/abyssal_anarchnid/abyssal_anarchid_death",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "abyssal_anarchnid.idle": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/abyssal_anarchnid/abyssal_anarchid_idle",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "abyssal_anarchnid.walk": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/abyssal_anarchnid/abyssal_anarchid_walk",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "devilmon.death": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/devilmon/devilmon_death",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "devilmon.idle": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/devilmon/devilmon_idle",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "devilmon.jump": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/devilmon/devilmon_jump",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    },
+    "devilmon.spit": {
+      "__use_legacy_max_distance": "true",
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/mob/devilmon/devilmon_spit",
+          "volume": 0.1,
+          "pitch": 1
+        }
+      ]
+    }
+  }
 }

@@ -1,46 +1,43 @@
 {
-    "format_version":"1.20.50",
-    "minecraft:client_entity": {
-      "description": {
-        "identifier": "dummy:devilmon",
-        "materials": {
-          "default": "entity_alphatest"
-        },
-        "textures": {
-          "default": "textures/entity/devilmon"
-        },
-        "geometry": {
-          "default": "geometry.devilmon"
-        },
-        "animations": {
-          "attack_controller": "controller.animation.devilmon.attack",
-          "walk_controller" : "controller.animation.devilmon.walk",
-          "jump": "animation.devilmon.jump",
-          "idle": "animation.devilmon.idle",
-          "spit" : "animation.devilmon.spit",
-          "death" : "animation.devilmon.death"
-         
-        },
-        "scripts": {
-          "animate": [
-            "attack_controller",
-            "walk_controller"
-          
-          ]
-        },
-        "particle_effects": {
-          "devilmon_jump" : "dummy:devilmon_jump",
-          "devilmon_spit" : "dummy:devilmon_spit"
-        },
-       
-        "render_controllers": [
-          "controller.render.default"
-        ],
-        "spawn_egg": {
-          "base_color": "#511828",
-          "overlay_color": "#ef8266"
-        }
+  "format_version": "1.20.50",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dummy:devilmon",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/devilmon"
+      },
+      "geometry": {
+        "default": "geometry.devilmon"
+      },
+      "animations": {
+        "attack_controller": "controller.animation.devilmon.attack",
+        "walk_controller": "controller.animation.devilmon.walk",
+        "jump": "animation.devilmon.jump",
+        "idle": "animation.devilmon.idle",
+        "spit": "animation.devilmon.spit",
+        "death": "animation.devilmon.death"
+      },
+      "scripts": {
+        "animate": ["attack_controller", "walk_controller"]
+      },
+      "particle_effects": {
+        "devilmon_jump": "dummy:devilmon_jump",
+        "devilmon_spit": "dummy:devilmon_spit"
+      },
+      "sound_effects": {
+        "devilmon.death": "devilmon.death",
+        "devilmon.idle": "devilmon.idle",
+        "devilmon.jump": "devilmon.jump",
+        "devilmon.spit": "devilmon.spit"
+      },
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#511828",
+        "overlay_color": "#ef8266"
       }
     }
   }
-  
+}

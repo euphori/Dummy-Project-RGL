@@ -155,6 +155,18 @@
         "golden_kings_excalibur_awakened_6": "dummy:golden_kings_excalibur_awakened_6",
         "golden_kings_excalibur_awakened_7": "dummy:golden_kings_excalibur_awakened_7"
       },
+      "sound_effects": {
+        "netherite_sickle.attack_basic1": "netherite_sickle.attack_basic1",
+        "netherite_sickle.attack_basic2": "netherite_sickle.attack_basic2",
+        "netherite_sickle.attack_basic3": "netherite_sickle.attack_basic3",
+        "netherite_sickle.double_jump": "netherite_sickle.double_jump",
+        "netherite_sickle.jump": "netherite_sickle.jump",
+        "netherite_sickle.run": "netherite_sickle.run",
+        "netherite_sickle.sharpen_sickle": "netherite_sickle.sharpen_sickle",
+        "netherite_sickle.throw": "netherite_sickle.throw",
+        "golden_kings_excalibur.awakened": "golden_kings_excalibur.awakened",
+        "golden_kings_excalibur.sneak": "golden_kings_excalibur.sneak"
+      },
       "render_controllers": [
         {
           "controller.render.player.first_person_spectator": "variable.is_first_person&&query.is_spectator"

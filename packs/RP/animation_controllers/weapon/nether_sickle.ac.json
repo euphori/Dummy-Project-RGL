@@ -34,6 +34,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.throw"],
+          "sound_effects": [{ "effect": "netherite_sickle.throw" }],
           "transitions": [
             {
               "attack_basic1": "v.attack_time"
@@ -66,6 +67,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.attack_basic1"],
+          "sound_effects": [{ "effect": "netherite_sickle.attack_basic1" }],
           "transitions": [
             {
               "attack_basic2": "q.property('dummy:atk_state') == 2"
@@ -88,6 +90,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.attack_basic2"],
+          "sound_effects": [{ "effect": "netherite_sickle.attack_basic2" }],
           "transitions": [
             {
               "attack_basic3": "q.property('dummy:atk_state') == 3"
@@ -110,6 +113,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.attack_basic3"],
+          "sound_effects": [{ "effect": "netherite_sickle.attack_basic3" }],
           "transitions": [
             {
               "attack_basic1": "q.property('dummy:atk_state') == 1"
@@ -203,6 +207,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.sharpen_sickle"],
+          "sound_effects": [{ "effect": "netherite_sickle.sharpen_sickle" }],
           "transitions": [
             {
               "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
@@ -228,6 +233,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.run"],
+          "sound_effects": [{ "effect": "netherite_sickle.run" }],
           "transitions": [
             {
               "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
@@ -247,6 +253,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.jump"],
+          "sound_effects": [{ "effect": "netherite_sickle.jump" }],
           "transitions": [
             {
               "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
@@ -267,6 +274,7 @@
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
           "animations": ["netherite_sickle.tpp.double_jump"],
+          "sound_effects": [{ "effect": "netherite_sickle.double_jump" }],
           "transitions": [
             {
               "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"

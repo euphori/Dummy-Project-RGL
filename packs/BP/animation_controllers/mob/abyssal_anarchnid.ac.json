@@ -1,84 +1,64 @@
 {
-    "format_version": "1.20.0",
-    "animation_controllers": {
-        "controller.animation.abyssal_anarchnid":{
-            "initial_state": "default",
-            "states": {
-                "default":{
-                    "on_entry": [
-                        "v.attack_1 = 0;",
-                        "@s dummy:atk.0"
-                    ],
-                    "transitions": [
-                        
-                        {
-                            "attack": "v.attack_time"
-                        },
-                        {
-                            "death" : "q.property('dummy:dead')"    
-                        },
-                        {
-                            "web" : "query.facing_target_to_range_attack"
-                        }
-                    ]
-                },
-               
-                "attack": {
-                    "animations": [
-                      "attack"
-                    ],
-                    "on_entry": [
-                      "@s dummy:atk.1"
-                    ],
-                    "transitions": [
-                        {
-                            "default": "q.all_animations_finished"
-                        },    
-                        {
-                            "web" : "query.facing_target_to_range_attack"
-                        }
-                    ]
-                  },
-                "web":{
-                    "animations": [
-                        "web"
-                    ],
-                    "on_entry": [
-                      "@s dummy:atk.2"
-                    ],
-                    "transitions": [
+  "format_version": "1.20.0",
+  "animation_controllers": {
+    "controller.animation.abyssal_anarchnid": {
+      "initial_state": "default",
 
-                        {
-                            "attack": "q.is_delayed_attacking"
-                        },
-                        {
-                            "death" : "q.property('dummy:dead')"    
-                        },
-                        {
-                            "default": "q.all_animations_finished"
-                        }
-                    ]
-                    
-                },
-                "death":{
-                    "on_entry": [
-                        "@s dummy:dead"
-                    ],
-                    "animations": [
-                        "death"
-                    ],
-                    "on_exit": [
-                        "@s dummy:despawn"
-                    ],
-                    "transitions": [
-                        {
-                            "death.end": "q.all_animations_finished"
-                        }
-                    ]
-                },
-                "death.end":{}
+      "states": {
+        "default": {
+          "on_entry": ["v.attack_1 = 0;", "@s dummy:atk.0"],
+          "transitions": [
+            {
+              "attack": "v.attack_time"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            },
+            {
+              "web": "query.facing_target_to_range_attack"
             }
-        }
-    }
+          ]
+        },
 
+        "attack": {
+          "animations": ["attack"],
+          "on_entry": ["@s dummy:atk.1"],
+          "transitions": [
+            {
+              "default": "q.all_animations_finished"
+            },
+            {
+              "web": "query.facing_target_to_range_attack"
+            }
+          ]
+        },
+        "web": {
+          "animations": ["web"],
+          "on_entry": ["@s dummy:atk.2"],
+          "transitions": [
+            {
+              "attack": "q.is_delayed_attacking"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            },
+            {
+              "default": "q.all_animations_finished"
+            }
+          ]
+        },
+        "death": {
+          "on_entry": ["@s dummy:dead"],
+          "animations": ["death"],
+          "on_exit": ["@s dummy:despawn"],
+          "transitions": [
+            {
+              "death.end": "q.all_animations_finished"
+            }
+          ]
+        },
+        "death.end": {}
+      }
+    }
+  }
 }

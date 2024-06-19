@@ -1,68 +1,60 @@
 {
-    "format_version": "1.20.50",
-    "animation_controllers": {
-      "controller.animation.devilmon.attack": {
-        "states": {
-            "default": {
-              "transitions":[
-                 {
-                  "spit": " q.property('dummy:atk') == 1"
-                },
-                {
-                  "death" : "q.property('dummy:dead')"
-                }
-              ]
+  "format_version": "1.20.50",
+  "animation_controllers": {
+    "controller.animation.devilmon.attack": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "spit": " q.property('dummy:atk') == 1"
             },
-            "spit":{
-              "animations": [
-                "spit"
-              ],
-              "transitions": [
-                {
-                  "default": "q.property('dummy:atk') == 0"
-                },
-                {
-                  "death" : "q.property('dummy:dead')"
-                }
-                
-              ]
-            },
-            "death":{
-              "animations": [
-                "death"
-              ]
-              
+            {
+              "death": "q.property('dummy:dead')"
             }
-        
-      }
-      
-    },
-    "controller.animation.devilmon.walk":{
-        "initial_state": "standing",
-        "states":{
-          "standing":{
-            "animations": [
-              "idle"
-            ],
-            "transitions": [
-              {
-                "jump": "q.modified_move_speed > 0.1"
-              }
-            ]
-          },
-          "jump":{
-            "blend_transition": 0.2,
-            "blend_via_shortest_path": true,
-            "animations": [
-              "jump"
-            ],
-            "transitions": [
-              {
-                "standing":  "q.modified_move_speed < 0.1"
-              }
-            ]
-          }
+          ]
+        },
+        "spit": {
+          "animations": ["spit"],
+          "sound_effects": [{ "effect": "spit" }],
+          "transitions": [
+            {
+              "default": "q.property('dummy:atk') == 0"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            }
+          ]
+        },
+        "death": {
+          "animations": ["death"],
+          "sound_effects": [{ "effect": "death" }]
         }
       }
+    },
+    "controller.animation.devilmon.walk": {
+      "initial_state": "standing",
+      "states": {
+        "standing": {
+          "animations": ["idle"],
+          "sound_effects": [{ "effect": "idle" }],
+          "transitions": [
+            {
+              "jump": "q.modified_move_speed > 0.1"
+            }
+          ]
+        },
+        "jump": {
+          "blend_transition": 0.2,
+          "blend_via_shortest_path": true,
+          "animations": ["jump"],
+          "sound_effects": [{ "effect": "jump" }],
+          "transitions": [
+            {
+              "standing": "q.modified_move_speed < 0.1"
+            }
+          ]
+        }
+      }
+    }
   }
 }
