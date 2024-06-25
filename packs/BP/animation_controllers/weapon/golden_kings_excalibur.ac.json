@@ -92,7 +92,7 @@
               "default": "q.all_animations_finished"
             },
             {
-              "hold_check": "q.is_using_item"
+              "hold_check": "q.is_using_item && q.property('dummy:can_summon_sword')  == true"
             },
             {
               "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
@@ -114,7 +114,7 @@
               "default": "q.all_animations_finished"
             },
             {
-              "hold_check": "q.is_using_item"
+              "hold_check": "q.is_using_item && q.property('dummy:can_summon_sword')  == true"
             },
             {
               "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"
@@ -136,7 +136,7 @@
               "default": "q.all_animations_finished"
             },
             {
-              "hold_check": "q.is_using_item"
+              "hold_check": "q.is_using_item && q.property('dummy:can_summon_sword') == true"
             },
             {
               "check": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:golden_kings_excalibur') && !q.is_crawling"

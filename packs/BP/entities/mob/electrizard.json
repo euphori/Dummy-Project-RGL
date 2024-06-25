@@ -88,11 +88,12 @@
       "minecraft:timer": {
         "looping": true,
         "randomInterval": true,
-        "time": [0.0, 3.0],
+        "time": [1.0, 5.0],
         "time_down_event": {
           "event": "dummy:summon_lightning"
         }
       },
+
       "minecraft:loot": {
         "table": "loot_tables/entities/electrizard.json"
       },
@@ -126,7 +127,7 @@
         "damage": 16
       },
       "minecraft:behavior.delayed_attack": {
-        "priority": 0,
+        "priority": 1,
         "attack_once": false,
         "track_target": true,
         "require_complete_path": false,
@@ -182,7 +183,26 @@
     },
     "component_groups": {
       "despawn": {
-        "minecraft:instant_despawn": {}
+        "minecraft:despawn": {}
+      },
+      "run_away": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 0,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "must_see": true
+            }
+          ],
+          "max_dist": 30.0,
+          "walk_speed_multiplier": 1.5,
+          "sprint_speed_multiplier": 1.5,
+          "sprint_distance": 10
+        }
       }
     },
     "events": {
@@ -195,11 +215,22 @@
           }
         ]
       },
+      "dummy:run_away": {
+        "add": {
+          "component_groups": ["run_away"]
+        }
+      },
       "dummy:summon_lightning": {
         "sequence": [
           {
             "queue_command": {
               "command": "scriptevent dummy:electrizard_lightning",
+              "target": "self"
+            }
+          },
+          {
+            "queue_command": {
+              "command": "scriptevent dummy:electrizard_check_cooldowns",
               "target": "self"
             }
           }

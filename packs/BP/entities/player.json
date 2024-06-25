@@ -63,6 +63,16 @@
           "client_sync": true,
           "type": "bool",
           "default": false
+        },
+        "dummy:can_charge": {
+          "client_sync": true,
+          "type": "bool",
+          "default": true
+        },
+        "dummy:can_summon_sword": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
         }
       }
     },
@@ -99,6 +109,7 @@
           }
         ]
       },
+
       "minecraft:attack": {
         "damage": 1
       },
@@ -210,6 +221,16 @@
         "minecraft:spell_effects": {
           "remove_effects": "bad_omen"
         }
+      },
+      "dummy:disable_fall_damage": {
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "fall",
+              "deals_damage": false
+            }
+          ]
+        }
       }
     },
     "events": {
@@ -264,7 +285,16 @@
           "dummy:jump_state": 0
         }
       },
-
+      "dummy:disable_fall_damage": {
+        "add": {
+          "component_groups": ["dummy:disable_fall_damage"]
+        }
+      },
+      "dummy:enable_fall_damage": {
+        "remove": {
+          "component_groups": ["dummy:disable_fall_damage"]
+        }
+      },
       "minecraft:gain_bad_omen": {
         "add": {
           "component_groups": ["minecraft:add_bad_omen"]

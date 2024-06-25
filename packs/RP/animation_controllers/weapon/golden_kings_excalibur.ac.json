@@ -14,6 +14,7 @@
         "default": {
           "blend_transition": 0.3,
           "blend_via_shortest_path": true,
+          "animations": ["golden_kings_excalibur.tpp.idle"],
           "transitions": [
             {
               "attack_basic1": "q.property('dummy:atk_state') == 1"
@@ -187,7 +188,7 @@
               "sneak": "q.is_sneaking"
             },
             {
-              "idle2": "q.all_animations_finished && math.random(0.0, 2.0) > 1.9"
+              "idle2": "q.all_animations_finished && math.mod(math.floor(q.life_time), 30) == 0"
             }
           ]
         },

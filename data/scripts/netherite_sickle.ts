@@ -1,5 +1,7 @@
 import * as mc from "@minecraft/server";
 
+import { item_being_used } from "./main";
+
 export const doubleJump = (player: mc.Player) => {
   player.applyKnockback(0, 0, 0, 1);
 };
@@ -107,44 +109,56 @@ mc.system.afterEvents.scriptEventReceive.subscribe((event) => {
   }
 });
 
-export function pullEnemies(player: mc.Player) {
-  const { frontVector, backVector } = getDirectionVectors(player);
+function getEntitiesExceptUser(player: mc.Player) {
   const entities = mc.world.getDimension("overworld").getEntities({
     location: player.location,
     maxDistance: 5,
-    excludeTypes: ["player"],
+    excludeFamilies: ["inanimate"],
   });
+  return entities.filter((entity) => entity.id !== player.id);
+}
+
+export function pullEnemies(player: mc.Player) {
+  const { frontVector, backVector } = getDirectionVectors(player);
+  const entities = getEntitiesExceptUser(player);
 
   function dealDamage(entity: mc.Entity, amount: number) {
     try {
-      entity.runCommandAsync(`damage @s ${amount}`);
+      entity.applyDamage(amount, {
+        cause: mc.EntityDamageCause.entityAttack,
+        damagingEntity: player,
+      });
     } catch (error) {
       console.error(`Failed to deal damage: ${error}`);
     }
   }
+
   mc.system.runTimeout(() => {
     entities.forEach((entity) => {
-      const entityPos = entity.location;
-      const playerPos = player.location;
-      const directionToEntity = {
-        x: entityPos.x - playerPos.x,
-        y: entityPos.y - playerPos.y,
-        z: entityPos.z - playerPos.z,
-      };
+      if (entity.isValid()) {
+        const entityPos = entity.location;
+        const playerPos = player.location;
+        const directionToEntity = {
+          x: entityPos.x - playerPos.x,
+          y: entityPos.y - playerPos.y,
+          z: entityPos.z - playerPos.z,
+        };
 
-      // Calculate the dot product to check if the entity is in front or back of the player - not necessary
-      const dotFront =
-        directionToEntity.x * frontVector.x +
-        directionToEntity.z * frontVector.z;
-      const dotBack =
-        directionToEntity.x * backVector.x + directionToEntity.z * backVector.z;
-      const pullStrength = 2.0;
-      // Apply the impulse if the entity is in front or back of the player
-      if (dotFront > 0 || dotBack > 0) {
-        pullEntity(player, entity, pullStrength);
-        applyEffects(entity, `wither`, 5, 1);
-        applyEffects(entity, `weakness`, 5, 0);
-        dealDamage(entity, 15);
+        // Calculate the dot product to check if the entity is in front or back of the player - not necessary
+        const dotFront =
+          directionToEntity.x * frontVector.x +
+          directionToEntity.z * frontVector.z;
+        const dotBack =
+          directionToEntity.x * backVector.x +
+          directionToEntity.z * backVector.z;
+        const pullStrength = 2.0;
+        // Apply the impulse if the entity is in front or back of the player
+        if (dotFront > 0 || dotBack > 0) {
+          pullEntity(player, entity, pullStrength);
+          applyEffects(entity, `wither`, 5, 1);
+          applyEffects(entity, `weakness`, 5, 0);
+          dealDamage(entity, 15);
+        }
       }
     });
   }, 20);

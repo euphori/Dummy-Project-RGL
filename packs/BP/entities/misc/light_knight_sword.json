@@ -32,7 +32,7 @@
         }
       },
       "minecraft:type_family": {
-        "family": ["light_sword"]
+        "family": ["light_sword", "inanimate"]
       },
       "minecraft:despawn": {
         "despawn_from_inactivity": true,

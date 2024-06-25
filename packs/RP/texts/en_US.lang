@@ -23,3 +23,5 @@ item.spawn_egg.entity.dummy:electrizard_thunderwave.name=Spawn Electrizard
 
 entity.dummy:electrizard_ground_strike.name=Electrizard
 item.spawn_egg.entity.dummy:electrizard_ground_strike.name=Spawn Electrizard
+
+item.dummy:thunder_totem=Thunder Totem

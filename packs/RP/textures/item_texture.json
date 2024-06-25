@@ -1,12 +1,15 @@
 {
-	"resource_pack_name": "Dummy Project",
-	"texture_name": "atlas.items",
-	"texture_data": {
-		"netherite_sickle": {
-			"textures": "textures/items/weapon/netherite_sickle"
-		},
-		"golden_kings_excalibur": {
-			"textures": "textures/items/weapon/golden_kings_excalibur"
-		}
-	}
+  "resource_pack_name": "Dummy Project",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "netherite_sickle": {
+      "textures": "textures/items/weapon/netherite_sickle"
+    },
+    "golden_kings_excalibur": {
+      "textures": "textures/items/weapon/golden_kings_excalibur"
+    },
+    "dummy:thunder_totem": {
+      "textures": "textures/items/totem"
+    }
+  }
 }

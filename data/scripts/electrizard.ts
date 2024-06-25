@@ -7,20 +7,23 @@ let thunderwaveCooldown = new Map<string, number>();
 mc.system.runInterval(() => {
   stunwaveCooldown.forEach((time, entityId) => {
     if (time > 0) {
-      stunwaveCooldown.set(entityId, time - 1);
+      stunwaveCooldown.set(entityId, time - 20);
+      //console.warn(`stunwave cooldown: ${stunwaveCooldown.get(entityId)}`);
     }
   });
   groundStrikeCooldown.forEach((time, entityId) => {
     if (time > 0) {
-      stunwaveCooldown.set(entityId, time - 1);
+      groundStrikeCooldown.set(entityId, time - 20);
+      // console.warn(`ground cooldown: ${stunwaveCooldown.get(entityId)}`);
     }
   });
   thunderwaveCooldown.forEach((time, entityId) => {
     if (time > 0) {
-      stunwaveCooldown.set(entityId, time - 1);
+      thunderwaveCooldown.set(entityId, time - 20);
+      //console.warn(`thunderwave cooldown: ${stunwaveCooldown.get(entityId)}`);
     }
   });
-}, 1);
+}, 20);
 
 function isPlayerNearby(entity: mc.Entity, maxDistance: number): boolean {
   const players = mc.world.getDimension("overworld").getPlayers({
@@ -87,21 +90,30 @@ export function updateCooldown(entity: mc.Entity) {
   if (currentStunwaveCooldown <= 0) {
     entity.setProperty("dummy:stunwave_on_cooldown", false);
   } else {
+    entity.runCommandAsync(
+      `/say stunwave cooldown: ${currentStunwaveCooldown}`
+    );
     entity.setProperty("dummy:stunwave_on_cooldown", true);
   }
   if (currentGroundStrikeCooldown <= 0) {
     entity.setProperty("dummy:ground_strike_on_cooldown", false);
   } else {
+    entity.runCommandAsync(
+      `/say groundstrike cooldown: ${currentGroundStrikeCooldown}`
+    );
     entity.setProperty("dummy:ground_strike_on_cooldown", true);
   }
   if (currentThunderwaveCooldown <= 0) {
     entity.setProperty("dummy:thunderwave_on_cooldown", false);
   } else {
+    entity.runCommandAsync(
+      `/say thunderwave cooldown: ${currentThunderwaveCooldown}`
+    );
     entity.setProperty("dummy:thunderwave_on_cooldown", true);
   }
 }
 export function groundStrike(entity: mc.Entity) {
-  if (!isPlayerNearby(entity, 30)) return;
+  // if (!isPlayerNearby(entity, 30)) return;
   const entityId = entity.id;
   const currentCooldown = groundStrikeCooldown.get(entityId) || 0;
   if (currentCooldown <= 0) {
@@ -120,6 +132,7 @@ export function groundStrike(entity: mc.Entity) {
       [{ name: "slowness", duration: 5, amplifier: 255 }],
       0
     );
+
     entity.runCommandAsync("/summon dummy:electrizard_ground_strike");
     groundStrikeCooldown.set(entityId, 30 * 20);
     entity.setProperty("dummy:ground_strike_on_cooldown", true);
@@ -127,11 +140,11 @@ export function groundStrike(entity: mc.Entity) {
 }
 
 export function stunWave(entity: mc.Entity) {
-  if (!isPlayerNearby(entity, 20)) return;
+  // if (!isPlayerNearby(entity, 20)) return;
   const forwardDirection = entity.getViewDirection();
   const entityId = entity.id;
   const currentCooldown = stunwaveCooldown.get(entityId) || 0;
-  entity.runCommandAsync(`/say stunwave cooldown: ${currentCooldown}`);
+
   if (currentCooldown <= 0) {
     entity.runCommandAsync("/say casted stunwave");
     const entities = mc.world.getDimension("overworld").getEntities({
@@ -159,7 +172,7 @@ export function stunWave(entity: mc.Entity) {
 }
 
 export function thunderWave(entity: mc.Entity) {
-  if (!isPlayerNearby(entity, 30)) return;
+  // if (!isPlayerNearby(entity, 30)) return;
   const entityId = entity.id;
   const currentCooldown = thunderwaveCooldown.get(entityId) || 0;
   if (currentCooldown <= 0) {
@@ -186,3 +199,15 @@ export function thunderWave(entity: mc.Entity) {
     }, 60); // 3 seconds (60 ticks)
   }
 }
+
+mc.world.afterEvents.entityHurt.subscribe((event) => {
+  const entity = event.hurtEntity;
+  if (entity && entity.typeId === "dummy:electrizard") {
+    const healthComponent = entity.getComponent(
+      "minecraft:health"
+    ) as mc.EntityHealthComponent;
+    if (healthComponent.currentValue <= 70) {
+      entity.runCommandAsync("event entity @s dummy:run_away");
+    }
+  }
+});

@@ -28,10 +28,10 @@
         "devilmon_spit": "dummy:devilmon_spit"
       },
       "sound_effects": {
-        "devilmon.death": "devilmon.death",
-        "devilmon.idle": "devilmon.idle",
-        "devilmon.jump": "devilmon.jump",
-        "devilmon.spit": "devilmon.spit"
+        "death": "devilmon.death",
+        "idle": "devilmon.idle",
+        "jump": "devilmon.jump",
+        "spit": "devilmon.spit"
       },
       "render_controllers": ["controller.render.default"],
       "spawn_egg": {

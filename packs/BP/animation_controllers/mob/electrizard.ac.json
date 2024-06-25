@@ -15,14 +15,13 @@
         "death": {
           "on_entry": ["@s dummy:dead"],
           "animations": ["death"],
-          "on_exit": ["@s dummy:despawn"],
           "transitions": [
             {
               "death.end": "q.all_animations_finished"
             }
           ]
         },
-        "death.end": {}
+        "death.end": { "on_entry": ["@s dummy:despawn"] }
       }
     },
     "controller.animation.electrizard.attack": {
@@ -35,7 +34,7 @@
           ],
           "transitions": [
             {
-              "attack": "v.attack_time && q.property('dummy:thunderwave_on_cooldown') && q.property('dummy:ground_strike_on_cooldown') && q.property('dummy:stunwave_on_cooldown')"
+              "attack": "q.is_delayed_attacking && q.property('dummy:thunderwave_on_cooldown') && q.property('dummy:ground_strike_on_cooldown') && q.property('dummy:stunwave_on_cooldown')"
             },
             {
               "stunwave": "!q.property('dummy:stunwave_on_cooldown') && q.property('dummy:thunderwave_on_cooldown') && q.property('dummy:ground_strike_on_cooldown')"
@@ -45,6 +44,9 @@
             },
             {
               "ground_strike": "!q.property('dummy:ground_strike_on_cooldown') && q.property('dummy:thunderwave_on_cooldown')"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
         },
@@ -59,6 +61,9 @@
           "transitions": [
             {
               "check_cooldowns": "q.all_animations_finished"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
         },
@@ -70,6 +75,9 @@
           "transitions": [
             {
               "default": "v.attack_1"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
         },
@@ -83,6 +91,9 @@
           "transitions": [
             {
               "check_cooldowns": "q.all_animations_finished"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
         },
@@ -97,6 +108,9 @@
           "transitions": [
             {
               "check_cooldowns": "q.all_animations_finished"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
         },
@@ -110,8 +124,27 @@
           "transitions": [
             {
               "check_cooldowns": "q.all_animations_finished"
+            },
+            {
+              "death": "q.property('dummy:dead')"
             }
           ]
+        },
+        "death": {
+          "on_entry": ["@s dummy:dead"],
+          "animations": ["death"],
+
+          "transitions": [
+            {
+              "death.end": "q.all_animations_finished"
+            },
+            {
+              "death": "q.property('dummy:dead')"
+            }
+          ]
+        },
+        "death.end": {
+          "on_entry": ["@s dummy:despawn"]
         }
       }
     }

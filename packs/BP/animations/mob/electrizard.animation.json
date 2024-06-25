@@ -1,40 +1,40 @@
 {
-    "format_version": "1.20.40",
-    "animations": {
-        "animation.electrizard.attack":{
-            "animation_length": 1,
-            "loop":false,
-            "timeline": {
-                "0.0": []
-            }
-        },
-      "animation.electrizard.death":{
-            "animation_length": 2,
-            "loop":false,
-            "timeline": {
-                "0.0": []
-            }
-        },
-        "animation.electrizard.thunderwave":{
-            "animation_length": 5,
-            "loop":false,
-            "timeline": {
-                "0.0": []
-            }
-        },
-        "animation.electrizard.hitground":{
-            "animation_length": 2,
-            "loop":false,
-            "timeline": {
-                "0.0": []
-            }
-        },
-        "animation.electrizard.stungrowl":{
-            "animation_length": 2.5,
-            "loop":false,
-            "timeline": {
-                "0.0": []
-            }
-        }
+  "format_version": "1.20.40",
+  "animations": {
+    "animation.electrizard.attack": {
+      "animation_length": 1,
+      "loop": false,
+      "timeline": {
+        "0.0": []
+      }
+    },
+    "animation.electrizard.death": {
+      "animation_length": 4,
+      "loop": false,
+      "timeline": {
+        "0.0": []
+      }
+    },
+    "animation.electrizard.thunderwave": {
+      "animation_length": 5,
+      "loop": false,
+      "timeline": {
+        "0.0": []
+      }
+    },
+    "animation.electrizard.hitground": {
+      "animation_length": 2,
+      "loop": false,
+      "timeline": {
+        "0.0": []
+      }
+    },
+    "animation.electrizard.stungrowl": {
+      "animation_length": 2.5,
+      "loop": false,
+      "timeline": {
+        "0.0": []
+      }
     }
+  }
 }

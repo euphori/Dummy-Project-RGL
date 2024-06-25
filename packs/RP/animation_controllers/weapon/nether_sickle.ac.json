@@ -12,9 +12,25 @@
           ]
         },
         "default": {
-          "blend_transition": 0.3,
-          "blend_via_shortest_path": true,
-
+          "transitions": [
+            {
+              "attack_basic1": "q.property('dummy:atk_state') == 1"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            }
+          ]
+        },
+        "double_jump": {
           "transitions": [
             {
               "attack_basic1": "q.property('dummy:atk_state') == 1"
@@ -27,6 +43,31 @@
             },
             {
               "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "default": "q.property('dummy:jump_state') == 0"
+            }
+          ]
+        },
+        "jump": {
+          "transitions": [
+            {
+              "double_jump": "q.property('dummy:jump_state') == 2"
+            },
+            {
+              "attack_basic1": "q.property('dummy:atk_state') == 1"
+            },
+            {
+              "initial": "!q.is_item_name_any('slot.weapon.mainhand', 'dummy:netherite_sickle')"
+            },
+            {
+              "check": "q.is_emoting"
+            },
+            {
+              "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "default": "q.property('dummy:jump_state') == 0"
             }
           ]
         },
@@ -45,7 +86,9 @@
             {
               "check": "(q.is_emoting && !q.is_crawling)"
             },
-
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
             {
               "default": "q.property('dummy:atk_state') == 0"
             }
@@ -82,6 +125,9 @@
               "throw": "q.property('dummy:atk_state') == -1"
             },
             {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
               "default": "q.property('dummy:atk_state') == 0"
             }
           ]
@@ -105,6 +151,9 @@
               "throw": "q.property('dummy:atk_state') == -1"
             },
             {
+              "jump": "q.property('dummy:jump_state') == 1"
+            },
+            {
               "default": "q.property('dummy:atk_state') == 0"
             }
           ]
@@ -126,6 +175,9 @@
             },
             {
               "throw": "q.property('dummy:atk_state') == -1"
+            },
+            {
+              "jump": "q.property('dummy:jump_state') == 1"
             },
             {
               "default": "q.property('dummy:atk_state') == 0"
@@ -193,7 +245,7 @@
               "run": "q.modified_move_speed > 0.14 && !q.is_sneaking"
             },
             {
-              "idle2": "q.all_animations_finished && math.random(0.0, 2.0) > 1.9"
+              "idle2": "q.all_animations_finished && math.mod(math.floor(q.life_time), 30) == 0"
             },
             {
               "jump": "q.property('dummy:jump_state') == 1"

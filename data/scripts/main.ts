@@ -6,12 +6,17 @@ import {
   excaliburChargedAttack,
   sneakEffect,
 } from "./golden_kings_excalibur.ts";
+
 import {
   stunWave,
   thunderWave,
   groundStrike,
   updateCooldown,
 } from "./electrizard.ts";
+
+import { handleEntityHitEvent } from "./abyssal_anarchnid.ts";
+
+export var item_being_used;
 
 function applyEffects(
   entity: mc.Entity,
@@ -30,6 +35,21 @@ function applyEffects(
 
   entity.addEffect(effect, duration * 20, effectOptions);
 }
+
+// mc.world.afterEvents.itemUse.subscribe((event) => {
+//   const player = event.source as mc.Player;
+//   if (player.getProperty("dummy:can_charge") == true) {
+//     item_being_used = event.itemStack;
+//   }
+//   player.setProperty("dummy:can_summon_sword", false);
+//   player.setProperty("dummy:can_charge", false);
+// });
+
+// mc.world.afterEvents.itemReleaseUse.subscribe((event) => {
+//   const player = event.source as mc.Player;
+
+//   player.setProperty("dummy:can_charge", true);
+// });
 
 mc.world.afterEvents.entityHurt.subscribe((event) => {
   const entity = event.hurtEntity;
@@ -50,6 +70,8 @@ mc.world.afterEvents.entityHurt.subscribe((event) => {
 });
 
 mc.world.afterEvents.entityHitEntity.subscribe((event) => {
+  handleEntityHitEvent();
+
   const entity = event.hitEntity;
   const attacker = event.damagingEntity;
   function getRandomInt(max) {
@@ -75,36 +97,6 @@ mc.world.afterEvents.entityHitEntity.subscribe((event) => {
       }
     } else {
       console.warn("No weapon");
-    }
-  }
-  // gives debuff to attacker when ENEMY ATTACKS PLAYER
-  if (entity && attacker && !(attacker instanceof mc.Player)) {
-    const item = entity.getComponent(
-      "minecraft:equippable"
-    ) as mc.EntityEquippableComponent;
-    const weapon = item.getEquipment(mc.EquipmentSlot.Mainhand);
-
-    switch (attacker.typeId) {
-      case "dummy:abyssal_anarchnid":
-        applyEffects(entity, `wither`, 5, 1);
-        break;
-
-      default:
-        break;
-    }
-    if (weapon) {
-      switch (weapon.typeId) {
-        case "dummy:netherite_sickle":
-          if (getRandomInt(10) <= 2) {
-            attacker.runCommandAsync(`say enemy got debuff`);
-            applyEffects(attacker, `wither`, 5, 1);
-            applyEffects(attacker, `slowness`, 5, 2);
-          }
-
-          break;
-        default:
-          return;
-      }
     }
   }
 });
@@ -198,5 +190,36 @@ mc.system.afterEvents.scriptEventReceive.subscribe((event) => {
       }
 
       break;
+  }
+});
+mc.world.afterEvents.itemUse.subscribe((event) => {
+  const player = event.source as mc.Player;
+  const item = player.getComponent(
+    "minecraft:equippable"
+  ) as mc.EntityEquippableComponent;
+  const totem = item.getEquipment(mc.EquipmentSlot.Mainhand)?.typeId;
+
+  if (player && totem === "dummy:thunder_totem") {
+    const summonLocation = {
+      x: player.location.x,
+      y: player.location.y,
+      z: player.location.z,
+    };
+
+    for (let i = 0; i < 5; i++) {
+      mc.system.runTimeout(() => {
+        mc.world
+          .getDimension("overworld")
+          .spawnEntity("minecraft:lightning_bolt", summonLocation);
+      }, i * 20); // 1 second intervals (20 ticks)
+    }
+
+    mc.system.runTimeout(() => {
+      mc.world
+        .getDimension("overworld")
+        .spawnEntity("dummy:electrizard", summonLocation);
+    }, 5 * 20);
+
+    player.runCommandAsync("clear @s dummy:thunder_totem 0 1");
   }
 });

@@ -9,7 +9,7 @@
           "on_entry": ["v.attack_1 = 0;", "@s dummy:atk.0"],
           "transitions": [
             {
-              "attack": "v.attack_time"
+              "attack": "q.is_delayed_attacking"
             },
             {
               "death": "q.property('dummy:dead')"
